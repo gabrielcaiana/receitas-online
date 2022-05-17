@@ -16,7 +16,7 @@
 
 ## Usage Backend
 
-- `yarn start` - This start application.
+- `yarn develop` - This start application.
 - `yarn build` - This build application.
 
 ## Usage Frontend
