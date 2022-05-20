@@ -26,6 +26,12 @@
     "slug": {
       "type": "uid",
       "targetField": "name"
+    },
+    "recipes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::recipe.recipe",
+      "mappedBy": "category"
     }
   }
 }
