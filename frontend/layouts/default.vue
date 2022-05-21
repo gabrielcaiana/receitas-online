@@ -1,7 +1,7 @@
 <template>
   <div class="h-screen bg-gray-100">
     <div class="flex">
-      <Sidebar />
+      <!-- <Sidebar /> -->
 
       <div class="flex-auto">
         <Header />

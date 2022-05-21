@@ -1,5 +1,5 @@
 <template>
-  <span class="font-bold text-2xl text-white">Receitas online</span>
+  <span class="font-bold text-2xl text-gray-500">Receitas online</span>
 </template>
 
 <script>

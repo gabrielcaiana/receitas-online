@@ -2,7 +2,8 @@
   <div
     class="w-auto shadow-md shadow-gray-500 bg-white h-20 flex items-center px-10"
   >
-    <div class="flex justify-between flex-auto">
+    <div class="flex justify-between items-center flex-auto gap-64">
+      <Logo />
       <InputSearch />
       <Avatar />
     </div>
