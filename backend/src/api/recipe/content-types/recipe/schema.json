@@ -8,7 +8,7 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -34,7 +34,8 @@
       "type": "json"
     },
     "likes": {
-      "type": "biginteger"
+      "type": "biginteger",
+      "default": "0"
     },
     "category": {
       "type": "relation",
