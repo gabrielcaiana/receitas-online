@@ -1,11 +1,14 @@
 <template>
   <div class="h-screen bg-gray-100">
-    <div class="flex gap-10">
+    <div class="flex">
       <Sidebar />
 
-      <main class="w-auto p-10">
-        <nuxt />
-      </main>
+      <div class="flex-auto">
+        <Header />
+        <main class="p-10 gap-10">
+          <nuxt />
+        </main>
+      </div>
     </div>
   </div>
 </template>
