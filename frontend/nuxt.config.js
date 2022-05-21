@@ -1,6 +1,6 @@
 export default {
   head: {
-    title: 'frontend-nuxt2',
+    title: 'frontend',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -12,7 +12,7 @@ export default {
 
   css: ['~/assets/css/tailwind.css'],
 
-  plugins: [],
+  plugins: ['~/plugins/featherIcons'],
 
   components: [{ path: '@/components', pathPrefix: false }],
 
