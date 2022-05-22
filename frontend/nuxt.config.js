@@ -34,5 +34,12 @@ export default {
     },
   },
 
+  loading: {
+    color: '#374151',
+    failedColor: '#ef4444',
+    height: '4px',
+    duration: 5000,
+  },
+
   build: {},
 }
