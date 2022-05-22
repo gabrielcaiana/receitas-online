@@ -1,10 +1,9 @@
 <template>
-  <div class="h-screen bg-gray-100">
+  <div class="min-h-screen bg-gray-100">
     <div class="flex">
-      <!-- <Sidebar /> -->
-
       <div class="flex-auto">
         <Header />
+        <Menu />
         <main class="p-10 gap-10">
           <nuxt />
         </main>
