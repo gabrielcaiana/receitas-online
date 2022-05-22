@@ -2,6 +2,7 @@
   <div>
     <hr />
     <nav
+      id="nav"
       class="bg-white shadow-md shadow-gray-500 flex items-center justify-center"
     >
       <p v-if="$fetchState.pending">Carregando...</p>
@@ -21,7 +22,7 @@
             name: 'categorias-slug',
             params: { slug: menu.attributes.slug },
           }"
-          class="cursor-pointer text-gray-700 hover:text-red-500 transition duration-150 ease-in-out"
+          class="cursor-pointer text-gray-700 hover:text-red-500 transition duration-150 ease-in-out relative"
           v-text="menu.attributes.name"
         ></nuxt-link>
       </ul>
@@ -47,3 +48,21 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+#nav .nuxt-link-exact-active {
+  color: #ef4444;
+}
+
+#nav .nuxt-link-exact-active::after {
+  content: '';
+  height: 3px;
+  width: 100%;
+  background: red;
+  bottom: -17px;
+  right: 0;
+  left: 0;
+  position: absolute;
+  border-radius: 4px;
+}
+</style>
