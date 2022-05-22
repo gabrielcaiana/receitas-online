@@ -1,8 +1,8 @@
-<p align="center">
-  <img width="250" src="https://i.ibb.co/w7VJn1W/central-recipe.png"/>
+<p align="center"> 
+  <img width="500" alt="Screen Shot 2022-05-21 at 10 15 04 PM" src="https://user-images.githubusercontent.com/26663338/169674235-416a4ec6-d232-46ee-877b-75f47e5b174f.png">
 </p>
 
-<h1 align="center">Central Recipe 🚧</h1>
+<h1 align="center">Receitas Online 🚧</h1>
 
 > technologies used
 
