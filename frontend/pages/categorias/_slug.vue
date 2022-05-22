@@ -1,7 +1,10 @@
 <template>
   <div>
-    <pre> {{ recipes }}</pre>
-    <pre> {{ pagination }}</pre>
+    <EmptyState
+      v-if="!recipes.length"
+      label="Ainda não foi cadastrada nenhuma receita para essa categoria"
+    />
+    <pre v-else> {{ recipes }}</pre>
   </div>
 </template>
 
