@@ -6,38 +6,32 @@
         v-for="(menu, index) in menus"
         :key="index"
         class="cursor-pointer text-gray-700 hover:text-red-500 transition duration-150 ease-in-out"
-        v-text="menu.name"
+        v-text="menu.attributes.name"
       ></li>
     </ul>
   </div>
 </template>
 
 <script>
+import { categoriesQuery } from '@/graphql/querys/categories'
 export default {
   name: 'AppMenu',
 
-  data() {
-    return {
-      menus: [
-        {
-          name: 'Bolos e tortas',
-        },
-        {
-          name: 'Carnes',
-        },
-        {
-          name: 'Aves',
-        },
-        {
-          name: 'Peixes e frutos do mar',
-        },
-        {
-          name: 'Salada e molhos',
-        },
-        {
-          name: 'Sopas',
-        },
-      ],
+  data: () => ({
+    menus: [],
+  }),
+
+  async fetch() {
+    try {
+      const client = this.$apollo.getClient()
+
+      const { data } = await client.query({
+        query: categoriesQuery(),
+      })
+
+      this.menus = data?.categories?.data
+    } catch (error) {
+      console.log(error)
     }
   },
 }
