@@ -5,11 +5,28 @@
       Aqui você encontra centenas<br />
       de receitas deliciosas!
     </h1>
+
+    {{ recipes }}
   </div>
 </template>
 
 <script>
+import { recipesQuery } from '@/graphql/querys/recipes'
 export default {
   name: 'IndexPage',
+  async asyncData({ app }) {
+    try {
+      const client = app.apolloProvider.defaultClient
+      const { data } = await client.query({
+        query: recipesQuery(),
+      })
+
+      return {
+        recipes: data,
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  },
 }
 </script>
