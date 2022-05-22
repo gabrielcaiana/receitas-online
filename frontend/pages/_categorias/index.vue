@@ -6,16 +6,20 @@
     />
 
     <ul>
-      <nuxt-link
-        v-for="recipe in recipes"
-        :key="recipe.id"
-        :to="{
-          name: 'categorias-receita',
-          params: { category: $route.params.category, receita: recipe.id },
-        }"
-      >
-        {{ recipe.attributes.name }}
-      </nuxt-link>
+      <li v-for="recipe in recipes" :key="recipe.id" class="w-80">
+        <nuxt-link
+          :to="{
+            name: 'categorias-receita',
+            params: { category: $route.params.category, receita: recipe.id },
+          }"
+        >
+          <Card
+            :image="recipe.attributes.img"
+            :title="recipe.attributes.name"
+            :likes="recipe.attributes.likes"
+          />
+        </nuxt-link>
+      </li>
     </ul>
   </div>
 </template>

@@ -13,6 +13,14 @@ export const recipesQuery = () => gql`
           description
           ingredients
           likes
+
+          category {
+            data {
+              attributes {
+                name
+              }
+            }
+          }
         }
       }
     }

@@ -1,12 +1,22 @@
 <template>
-  <div class="mt-20 flex flex-col items-center">
-    <img width="400" src="@/assets/icons/breakfast.svg" class="mb-12" alt="" />
-    <h1 class="text-4xl col-span text-gray-700 text-center">
-      Aqui você encontra centenas<br />
-      de receitas deliciosas!
-    </h1>
-
-    {{ recipes }}
+  <div>
+    <ul>
+      <li v-for="recipe in recipes" :key="recipe.id" class="w-80">
+        <nuxt-link
+          :to="{
+            name: 'categorias-receita',
+            params: { category: $route.params.category, receita: recipe.id },
+          }"
+        >
+          <Card
+            :image="recipe.attributes.img"
+            :title="recipe.attributes.name"
+            :likes="recipe.attributes.likes"
+            :category="recipe.attributes.category.data.attributes.name"
+          />
+        </nuxt-link>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -22,7 +32,7 @@ export default {
       })
 
       return {
-        recipes: data,
+        recipes: data.recipes.data,
       }
     } catch (error) {
       console.log(error)
