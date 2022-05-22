@@ -37,15 +37,7 @@ export const recipesByCategorieQuery = (slug) => gql`
           duration
           portions
           img
-          likes,
-          category {
-            data {
-              attributes
-              {
-                name
-              }
-            }
-          }
+          likes
         }
       }
       meta {
@@ -54,6 +46,28 @@ export const recipesByCategorieQuery = (slug) => gql`
           page
           pageSize
           pageCount
+        }
+      }
+    }
+  }
+`
+
+export const recipeQuery = (id) => gql`
+  {
+    recipe(
+      id: ${id}
+    ) {
+      data {
+        id
+        attributes {
+          name
+          duration
+          portions
+          img
+          description
+          ingredients
+          steps
+          likes
         }
       }
     }

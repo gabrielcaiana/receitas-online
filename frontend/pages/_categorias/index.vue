@@ -4,7 +4,19 @@
       v-if="!recipes.length"
       label="Ainda não foi cadastrada nenhuma receita para essa categoria"
     />
-    <pre v-else> {{ recipes }}</pre>
+
+    <ul>
+      <nuxt-link
+        v-for="recipe in recipes"
+        :key="recipe.id"
+        :to="{
+          name: 'categorias-receita',
+          params: { category: $route.params.category, receita: recipe.id },
+        }"
+      >
+        {{ recipe.attributes.name }}
+      </nuxt-link>
+    </ul>
   </div>
 </template>
 
@@ -18,7 +30,7 @@ export default {
     try {
       const client = app.apolloProvider.defaultClient
       const { data } = await client.query({
-        query: recipesByCategorieQuery(params.slug),
+        query: recipesByCategorieQuery(params.categorias),
       })
 
       recipes = data.recipes.data

@@ -19,8 +19,11 @@
           v-for="(menu, index) in menus"
           :key="index"
           :to="{
-            name: 'categorias-slug',
-            params: { slug: menu.attributes.slug },
+            name: 'categorias',
+            params: {
+              categorias: menu.attributes.slug,
+              category: menu.attributes.name,
+            },
           }"
           class="cursor-pointer text-gray-700 hover:text-red-500 transition duration-150 ease-in-out relative"
           v-text="menu.attributes.name"
