@@ -1,10 +1,7 @@
 <template>
   <div>
-    <div>
-      {{ $route.params.category }}
-    </div>
-
-    <pre>{{ recipe }}</pre>
+    <img class="rounded-lg" :src="recipe.img" :alt="recipe.name" />
+    <!-- <pre>{{ recipe }}</pre> -->
   </div>
 </template>
 
@@ -22,7 +19,7 @@ export default {
         query: recipeQuery(params.receita),
       })
 
-      recipe = data.recipe.data
+      recipe = data.recipe.data.attributes
     } catch (error) {
       console.log(error)
     }
