@@ -1,11 +1,14 @@
 <template>
   <div>
-    <ul>
+    <ul class="flex justify-center flex-wrap gap-8">
       <li v-for="recipe in recipes" :key="recipe.id" class="w-80">
         <nuxt-link
           :to="{
             name: 'categorias-receita',
-            params: { category: $route.params.category, receita: recipe.id },
+            params: {
+              categorias: recipe.attributes.category.data.attributes.slug,
+              receita: recipe.id,
+            },
           }"
         >
           <Card

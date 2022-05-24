@@ -2,7 +2,11 @@
   <div
     class="bg-white rounded-lg shadow-md hover:shadow-xl shadow-gray-500 transition duration-300 ease-out hover:ease-in"
   >
-    <img :src="image" :alt="title" class="rounded-tl-md rounded-tr-md" />
+    <img
+      :src="image"
+      :alt="title"
+      class="rounded-tl-md rounded-tr-md w-full h-56 object-cover"
+    />
 
     <div class="p-6 text-center flex items-center flex-col">
       <span
@@ -31,7 +35,7 @@ export default {
     },
 
     category: {
-      type: Object,
+      type: String,
       default: null,
     },
 
@@ -41,8 +45,8 @@ export default {
     },
 
     likes: {
-      type: String,
-      required: true,
+      type: Number,
+      default: 0,
     },
   },
 }

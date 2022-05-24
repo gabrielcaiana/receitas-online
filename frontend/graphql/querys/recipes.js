@@ -18,6 +18,7 @@ export const recipesQuery = () => gql`
             data {
               attributes {
                 name
+                slug
               }
             }
           }
