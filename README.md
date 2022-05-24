@@ -1,6 +1,7 @@
 <p align="center"> 
-  <img width="500" alt="Screen Shot 2022-05-21 at 10 15 04 PM" src="https://user-images.githubusercontent.com/26663338/169674235-416a4ec6-d232-46ee-877b-75f47e5b174f.png">
+<img width="500" alt="Screen Shot 2022-05-23 at 9 26 23 PM" src="https://user-images.githubusercontent.com/26663338/169924853-7e4017be-3516-4867-b578-7b364b8e6d48.png">
 </p>
+
 
 <h1 align="center">Receitas Online 🚧</h1>
 
