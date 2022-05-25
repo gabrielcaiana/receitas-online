@@ -1,7 +1,7 @@
 <template>
   <div class="flex gap-3">
     <Icon name="clock" color="#374151" />
-    <span class="text-gray-500" v-text="`${formatedTime} minutos`"></span>
+    <span class="text-gray-500" v-text="`Tempo: ${formatedTime}`"></span>
   </div>
 </template>
 
