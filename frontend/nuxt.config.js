@@ -14,7 +14,7 @@ export default {
 
   plugins: ['~/plugins/featherIcons'],
 
-  components: [{ path: '@/components', pathPrefix: false }],
+  components: true,
 
   buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/tailwindcss'],
 
