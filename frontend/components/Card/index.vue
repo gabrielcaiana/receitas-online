@@ -18,7 +18,7 @@
       <p class="text-gray-700 mb-4" v-text="title"></p>
       <p class="flex gap-2">
         <Icon name="heart" color="#ef4444" />
-        <span v-text="`${likes} likes`"></span>
+        <span v-text="`${likes} curtidas`"></span>
       </p>
     </div>
   </div>
