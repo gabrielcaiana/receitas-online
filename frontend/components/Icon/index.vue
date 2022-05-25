@@ -1,6 +1,12 @@
 <template>
   <div v-on="$listeners">
-    <i :height="size" :width="size" :data-feather="name" :stroke="color"></i>
+    <i
+      :height="size"
+      :width="size"
+      :data-feather="name"
+      :stroke="color"
+      :fill="background"
+    ></i>
   </div>
 </template>
 
@@ -19,6 +25,10 @@ export default {
     size: {
       type: String,
       default: '24',
+    },
+    background: {
+      type: String,
+      default: 'transparent',
     },
   },
 }
