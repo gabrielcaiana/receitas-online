@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section>
     <EmptyState
       v-if="!recipes.length"
       label="Ainda não foi cadastrada nenhuma receita para essa categoria"
@@ -21,7 +21,7 @@
         </nuxt-link>
       </li>
     </ul>
-  </div>
+  </section>
 </template>
 
 <script>

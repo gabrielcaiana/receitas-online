@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section>
     <ul class="flex justify-center flex-wrap gap-8">
       <nuxt-link
         v-for="recipe in recipes"
@@ -21,7 +21,7 @@
         />
       </nuxt-link>
     </ul>
-  </div>
+  </section>
 </template>
 
 <script>

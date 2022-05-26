@@ -1,5 +1,5 @@
 <template>
-  <div class="w-5/6 m-auto">
+  <section class="w-5/6 m-auto">
     <RecipeTitle :title="recipe.name" />
     <div class="grid grid-cols-1 gap-4">
       <RecipeCover :cover="recipe.img" :name="recipe.name" />
@@ -23,7 +23,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
