@@ -7,6 +7,7 @@
         <main class="p-10 gap-10">
           <nuxt />
         </main>
+        <Footer />
       </div>
     </div>
   </div>
