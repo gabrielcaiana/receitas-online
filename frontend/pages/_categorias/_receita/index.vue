@@ -49,5 +49,18 @@ export default {
       recipe,
     }
   },
+
+  head() {
+    return {
+      title: this.recipe.name,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.recipe.description,
+        },
+      ],
+    }
+  },
 }
 </script>

@@ -42,5 +42,19 @@ export default {
       console.log(error)
     }
   },
+
+  head() {
+    return {
+      title: 'Home',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'No receitas online você encontra centenas de novas ideias para se deliciar',
+        },
+      ],
+    }
+  },
 }
 </script>

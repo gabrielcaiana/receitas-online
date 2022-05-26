@@ -48,5 +48,18 @@ export default {
       pagination,
     }
   },
+
+  head() {
+    return {
+      title: this.$route.params.categorias,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Temos diversas categorias de receitas disponíveis',
+        },
+      ],
+    }
+  },
 }
 </script>
