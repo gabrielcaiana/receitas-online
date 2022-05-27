@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'AppInputSearch',
 
@@ -33,5 +34,17 @@ export default {
       search: '',
     }
   },
+
+  computed: {
+    ...mapGetters({
+      recipes: 'recipes/getRecipes'
+    }),
+
+    filteredRecipe() {
+      return this.recipes.filter((recipe) => {
+        return recipe.attributes.name.toLowerCase().match(this.search.toLowerCase())
+      })
+    }
+  }
 }
 </script>
