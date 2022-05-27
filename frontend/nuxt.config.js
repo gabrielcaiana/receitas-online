@@ -21,7 +21,7 @@ export default {
 
   components: true,
 
-  buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/tailwindcss'],
+  buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/tailwindcss', '@nuxtjs/composition-api/module', '@pinia/nuxt',],
 
   modules: ['@nuxtjs/pwa', '@nuxtjs/apollo'],
 
