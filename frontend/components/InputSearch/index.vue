@@ -1,10 +1,5 @@
 <template>
   <div class="flex-auto relative">
-    <label
-      for="default-search"
-      class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300"
-      >Pesquisar</label
-    >
     <div class="relative">
       <div
         class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none"
