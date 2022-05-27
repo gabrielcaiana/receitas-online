@@ -7,7 +7,23 @@ export const categoriesQuery = () => gql`
         attributes {
           slug
           name
-          img
+          img,
+          recipes {
+            data {
+            id
+              attributes {
+                name
+                category {
+                  data {
+                    id
+                    attributes {
+                      name
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }
