@@ -19,14 +19,13 @@
         placeholder="Pesquise por uma receita"
         required
       />
-      <Button label="Pesquisar" />
     </div>
 
     <div
       v-if="search.length !== 0"
       class="w-full rounded-lg shadow-md shadow-gray-500 p-6 absolute bg-white z-10"
     >
-      <ul>
+      <ul v-if="filteredRecipe.length">
         <li
           v-for="recipe in filteredRecipe"
           :key="recipe.id"
@@ -34,6 +33,8 @@
           v-text="recipe.attributes.name"
         ></li>
       </ul>
+
+      <p v-else class="text-gray-500">Nenhuma receita encontrada</p>
     </div>
   </div>
 </template>
