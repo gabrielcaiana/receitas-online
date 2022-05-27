@@ -28,12 +28,14 @@
 import { recipesQuery } from '@/graphql/querys/recipes'
 export default {
   name: 'IndexPage',
-  async asyncData({ app }) {
+  async asyncData({ app, store }) {
     try {
       const client = app.apolloProvider.defaultClient
       const { data } = await client.query({
         query: recipesQuery(),
       })
+
+      store.commit('recipes/SET_RECIPES', data.recipes.data)
 
       return {
         recipes: data.recipes.data,
