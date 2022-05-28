@@ -27,7 +27,6 @@ export const recipesQuery = () => gql`
     }
   }
 `
-
 export const recipesByCategorieQuery = (slug) => gql`
   {
     recipes(
@@ -60,7 +59,6 @@ export const recipesByCategorieQuery = (slug) => gql`
     }
   }
 `
-
 export const recipeQuery = (id) => gql`
   {
     recipe(
@@ -84,11 +82,21 @@ export const recipeQuery = (id) => gql`
 `
 export const recipeSearchQuery = (term) => gql`
   {
-    recipes(filters: { name: { contains: ${term} } }) {
+    recipes(filters: { name: { contains: "${term}" } }) {
       data {
         id
         attributes {
           name
+          category {
+            data {
+              id
+              attributes
+              {
+                name
+                slug
+              }
+            }
+          }
         }
       }
     }
