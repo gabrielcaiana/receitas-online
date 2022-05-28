@@ -31,24 +31,11 @@
 </template>
 
 <script>
-import { recipesQuery } from '@/graphql/querys/recipes'
+import { mapGetters } from 'vuex'
 export default {
   name: 'IndexPage',
-  async asyncData({ app, store }) {
-    try {
-      const client = app.apolloProvider.defaultClient
-      const { data } = await client.query({
-        query: recipesQuery(),
-      })
-
-      store.commit('recipes/SET_RECIPES', data.recipes.data)
-      return {
-        recipes: data.recipes.data,
-        pagination: data.recipes.meta.pagination,
-      }
-    } catch (error) {
-      console.log(error)
-    }
+  asyncData({ store }) {
+    store.dispatch('recipes/loadRecipes')
   },
 
   head() {
@@ -63,6 +50,13 @@ export default {
         },
       ],
     }
+  },
+
+  computed: {
+    ...mapGetters({
+      recipes: 'recipes/getRecipes',
+      pagination: 'recipes/getPagination',
+    }),
   },
 }
 </script>
