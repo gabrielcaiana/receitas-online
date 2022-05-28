@@ -21,6 +21,12 @@
         />
       </nuxt-link>
     </ul>
+    <div class="w-full flex justify-center mt-10">
+      <Pagination
+        :current-page="pagination.page"
+        :total-pages="pagination.pageCount"
+      />
+    </div>
   </section>
 </template>
 
@@ -36,9 +42,9 @@ export default {
       })
 
       store.commit('recipes/SET_RECIPES', data.recipes.data)
-
       return {
         recipes: data.recipes.data,
+        pagination: data.recipes.meta.pagination,
       }
     } catch (error) {
       console.log(error)

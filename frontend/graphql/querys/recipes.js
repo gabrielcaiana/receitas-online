@@ -2,7 +2,7 @@ import { gql } from 'graphql-tag'
 
 export const recipesQuery = () => gql`
   {
-    recipes(sort: "name") {
+    recipes(sort: "name", pagination: { page: 1, pageSize: 3 }) {
       data {
         id
         attributes {
@@ -22,6 +22,14 @@ export const recipesQuery = () => gql`
               }
             }
           }
+        }
+      }
+      meta {
+        pagination {
+          total
+          page
+          pageSize
+          pageCount
         }
       }
     }
