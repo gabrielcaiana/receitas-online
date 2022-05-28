@@ -13,6 +13,7 @@
         class="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-red-500 focus:border-red-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
         placeholder="Pesquise por uma receita"
         required
+        @input="processChange"
       />
     </div>
 
@@ -20,42 +21,64 @@
       v-if="search.length !== 0"
       class="w-full rounded-lg shadow-md shadow-gray-500 p-6 absolute bg-white z-10"
     >
-      <ul v-if="filteredRecipe.length">
-        <li
-          v-for="recipe in filteredRecipe"
+      <ul v-if="search" class="flex flex-col">
+        <nuxt-link
+          v-for="recipe in recipes"
           :key="recipe.id"
+          :to="{
+            name: 'categorias-receita',
+            params: {
+              categorias: recipe.attributes.category.data.attributes.slug,
+              receita: recipe.id,
+            },
+          }"
           class="py-2 text-gray-500 cursor-pointer hover:text-red-500 transition duration-300 ease-in-out"
+          @click.native="search = ''"
           v-text="recipe.attributes.name"
-        ></li>
+        >
+        </nuxt-link>
       </ul>
 
-      <p v-else class="text-gray-500">Nenhuma receita encontrada</p>
+      <p v-if="!recipes.length" class="text-gray-500">
+        Nenhuma receita encontrada
+      </p>
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { recipeSearchQuery } from '@/graphql/querys/recipes'
+import { debounce } from '@/utils/debounce'
+
 export default {
   name: 'AppInputSearch',
 
   data() {
     return {
       search: '',
+      recipes: '',
     }
   },
 
   computed: {
-    ...mapGetters({
-      recipes: 'recipes/getRecipes',
-    }),
+    processChange() {
+      return debounce(() => this.filteredRecipe())
+    },
+  },
 
-    filteredRecipe() {
-      return this.recipes.filter((recipe) => {
-        return recipe.attributes.name
-          .toLowerCase()
-          .match(this.search.toLowerCase())
-      })
+  methods: {
+    debounce,
+    async filteredRecipe() {
+      try {
+        const client = this.$apollo.getClient()
+        const { data } = await client.query({
+          query: recipeSearchQuery(this.search),
+        })
+
+        this.recipes = data.recipes.data
+      } catch (error) {
+        console.log(error)
+      }
     },
   },
 }
