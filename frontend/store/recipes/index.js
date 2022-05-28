@@ -21,7 +21,7 @@ export const mutations = {
 }
 
 export const actions = {
-  async loadRecipes({ commit }, { page, pageSize }) {
+  async loadRecipes({ commit }, page = 1, pageSize = 2) {
     try {
       const client = this.app.apolloProvider.defaultClient
       const { data } = await client.query({

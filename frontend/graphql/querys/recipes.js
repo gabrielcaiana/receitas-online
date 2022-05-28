@@ -1,6 +1,6 @@
 import { gql } from 'graphql-tag'
 
-export const recipesQuery = (page = 2, pageSize = 2) => gql`
+export const recipesQuery = (page, pageSize) => gql`
   {
     recipes(sort: "name", pagination: { page: ${page}, pageSize: ${pageSize} }) {
       data {
