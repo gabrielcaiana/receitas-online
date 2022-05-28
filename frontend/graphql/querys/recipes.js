@@ -2,7 +2,7 @@ import { gql } from 'graphql-tag'
 
 export const recipesQuery = () => gql`
   {
-    recipes {
+    recipes(sort: "name") {
       data {
         id
         attributes {
@@ -77,6 +77,18 @@ export const recipeQuery = (id) => gql`
           ingredients
           steps
           likes
+        }
+      }
+    }
+  }
+`
+export const recipeSearchQuery = (term) => gql`
+  {
+    recipes(filters: { name: { contains: ${term} } }) {
+      data {
+        id
+        attributes {
+          name
         }
       }
     }
