@@ -1,9 +1,15 @@
-import { recipesQuery } from '@/graphql/querys/recipes'
+import {
+  recipesQuery,
+  recipesByCategorieQuery,
+  recipesBySlugQuery,
+  recipeSearchQuery,
+} from '@/graphql/querys/recipes'
 
 export default function ({ app, store }, inject) {
+  const client = app.apolloProvider.defaultClient
+
   const loadRecipes = async (page) => {
     try {
-      const client = app.apolloProvider.defaultClient
       const { data } = await client.query({
         query: recipesQuery(page),
       })
@@ -20,7 +26,51 @@ export default function ({ app, store }, inject) {
     }
   }
 
+  const loadRecipesByCategorie = async (params) => {
+    try {
+      const { data } = await client.query({
+        query: recipesByCategorieQuery(params.categorias),
+      })
+
+      return {
+        recipes: data.recipes.data,
+        pagination: data.recipes.meta.pagination,
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const recipesBySlug = async (params) => {
+    try {
+      const { data } = await client.query({
+        query: recipesBySlugQuery(params.receita),
+      })
+      return {
+        recipe: data.recipes.data[0].attributes,
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const recipeSearch = async (search) => {
+    try {
+      const { data } = await client.query({
+        query: recipeSearchQuery(search),
+      })
+      return {
+        recipes: data.recipes.data,
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   inject('strapiApi', {
     loadRecipes,
+    loadRecipesByCategorie,
+    recipesBySlug,
+    recipeSearch,
   })
 }
