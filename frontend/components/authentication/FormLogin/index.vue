@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form class="mt-6">
+    <form class="mt-6" @submit.prevent="login">
       <div>
         <span class="text-sm text-gray-500">Bem vindo de volta</span>
         <h1 class="text-2xl font-bold text-gray-700">
@@ -10,13 +10,18 @@
 
       <div class="my-5">
         <ReusableInputText
+          v-model="form.email"
           type="email"
           name="email"
           label="Email"
           placeholder="Digite seu email"
           class="mb-4"
         />
-        <ReusableInputPassword />
+        <ReusableInputPassword
+          v-model="form.password"
+          label="Senha"
+          placeholder="Digite sua senha"
+        />
       </div>
 
       <div class="flex justify-between">
@@ -51,5 +56,20 @@
 <script>
 export default {
   name: 'AppFormLogin',
+
+  data() {
+    return {
+      form: {
+        email: '',
+        password: '',
+      },
+    }
+  },
+
+  methods: {
+    login() {
+      console.log(this.form)
+    },
+  },
 }
 </script>
