@@ -27,22 +27,11 @@
 </template>
 
 <script>
-import { recipesBySlugQuery } from '@/graphql/querys/recipes'
 export default {
   name: 'RecipePage',
 
-  async asyncData({ app, params }) {
-    let recipe
-
-    try {
-      const client = app.apolloProvider.defaultClient
-      const { data } = await client.query({
-        query: recipesBySlugQuery(params.receita),
-      })
-      recipe = data.recipes.data[0].attributes
-    } catch (error) {
-      console.log(error)
-    }
+  async asyncData({ $strapiApi, params }) {
+    const { recipe } = await $strapiApi.recipesBySlug(params)
 
     return {
       recipe,

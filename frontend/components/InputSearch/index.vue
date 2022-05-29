@@ -47,7 +47,6 @@
 </template>
 
 <script>
-import { recipeSearchQuery } from '@/graphql/querys/recipes'
 import { debounce } from '@/utils/debounce'
 
 export default {
@@ -62,23 +61,15 @@ export default {
 
   computed: {
     processChange() {
-      return debounce(() => this.filteredRecipe(), 500)
+      return debounce(() => this.filteredRecipe(), 1000)
     },
   },
 
   methods: {
     debounce,
     async filteredRecipe() {
-      try {
-        const client = this.$apollo.getClient()
-        const { data } = await client.query({
-          query: recipeSearchQuery(this.search),
-        })
-
-        this.recipes = data.recipes.data
-      } catch (error) {
-        console.log(error)
-      }
+      const { recipes } = await this.$strapiApi.recipeSearch(this.search)
+      this.recipes = recipes
     },
   },
 }
