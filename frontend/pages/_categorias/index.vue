@@ -1,6 +1,6 @@
 <template>
   <section class="p-10">
-    <EmptyState
+    <MoleculesEmptyState
       v-if="!recipes.length"
       label="Ainda não foi cadastrada nenhuma receita para essa categoria"
     />
@@ -13,7 +13,7 @@
             params: { receita: recipe.attributes.slug },
           }"
         >
-          <Card
+          <OrganismsCard
             :image="recipe.attributes.img"
             :title="recipe.attributes.name"
             :likes="recipe.attributes.likes"

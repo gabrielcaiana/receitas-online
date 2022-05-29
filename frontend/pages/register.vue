@@ -8,8 +8,8 @@
     <div class="flex justify-end">
       <div class="bg-white min-h-screen w-1/2 flex justify-center items-center">
         <div class="w-full p-16">
-          <Logo />
-          <AuthenticationFormRegister />
+          <AtomsLogo />
+          <OrganismsAuthenticationFormRegister />
         </div>
       </div>
     </div>
@@ -19,5 +19,18 @@
 <script>
 export default {
   name: 'AppRegister',
+
+  head() {
+    return {
+      title: 'Cadastre-se',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Crie sua conta no receitas online agora mesmo',
+        },
+      ],
+    }
+  },
 }
 </script>

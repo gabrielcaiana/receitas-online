@@ -1,31 +1,31 @@
 <template>
   <section class="w-5/6 m-auto py-10">
-    <EmptyState
+    <MoleculesEmptyState
       v-if="!recipe"
       label="A receita não existe, pesquisa por uma nova receita!"
     />
 
     <template v-else>
-      <RecipeTitle :title="recipe.name" />
+      <MoleculesRecipeTitle :title="recipe.name" />
       <div class="grid grid-cols-1 gap-4">
-        <RecipeCover :cover="recipe.img" :name="recipe.name" />
+        <MoleculesRecipeCover :cover="recipe.img" :name="recipe.name" />
         <div class="bg-white p-10 rounded-md">
           <div>
             <div class="flex gap-10">
-              <RecipeLikes :likes="recipe.likes" />
-              <RecipeDuration :duration="recipe.duration" />
-              <RecipePortions :portions="recipe.portions" />
+              <MoleculesRecipeLikes :likes="recipe.likes" />
+              <MoleculesRecipeDuration :duration="recipe.duration" />
+              <MoleculesRecipePortions :portions="recipe.portions" />
             </div>
-            <Divider />
+            <AtomsDivider />
 
-            <RecipeDescription :description="recipe.description" />
+            <MoleculesRecipeDescription :description="recipe.description" />
           </div>
 
-          <Divider />
+          <AtomsDivider />
 
           <div class="grid grid-cols-2 gap-4">
-            <RecipeIngredients :ingredients="recipe.ingredients" />
-            <RecipeSteps :steps="recipe.steps" />
+            <MoleculesRecipeIngredients :ingredients="recipe.ingredients" />
+            <MoleculesRecipeSteps :steps="recipe.steps" />
           </div>
         </div>
       </div>

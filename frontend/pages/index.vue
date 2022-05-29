@@ -1,6 +1,6 @@
 <template>
   <section>
-    <EmptyState
+    <MoleculesEmptyState
       v-if="!recipes.length"
       label="Ainda não foi cadastrada nenhuma receita para essa categoria"
     />
@@ -19,7 +19,7 @@
             },
           }"
         >
-          <Card
+          <OrganismsCard
             :image="recipe.attributes.img"
             :title="recipe.attributes.name"
             :likes="recipe.attributes.likes"
@@ -28,7 +28,7 @@
         </nuxt-link>
       </ul>
       <div class="w-full flex justify-center mt-10">
-        <Pagination
+        <MoleculesPagination
           :current-page="pagination.page"
           :total-pages="pagination.pageCount"
           @previous="changePage('previous')"

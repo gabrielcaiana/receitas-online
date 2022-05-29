@@ -8,8 +8,8 @@
     <div class="flex justify-end">
       <div class="bg-white min-h-screen w-1/2 flex justify-center items-center">
         <div class="w-full p-16">
-          <Logo />
-          <AuthenticationFormLogin />
+          <AtomsLogo />
+          <OrganismsAuthenticationFormLogin />
         </div>
       </div>
     </div>
@@ -19,5 +19,19 @@
 <script>
 export default {
   name: 'AppLogin',
+
+  head() {
+    return {
+      title: 'Login',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'Faça login no receitas online e cadastre e salve centenas de receitas',
+        },
+      ],
+    }
+  },
 }
 </script>

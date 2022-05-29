@@ -1,14 +1,14 @@
 <template>
   <div class="min-h-screen bg-gray-100">
     <div v-if="logged">
-      <Header />
-      <Menu />
+      <OrganismsHeader />
+      <OrganismsMenu />
       <main>
         <transition name="slide" mode="out-in">
           <nuxt />
         </transition>
       </main>
-      <Footer v-if="logged" />
+      <OrganismsFooter v-if="logged" />
     </div>
 
     <div v-else>
