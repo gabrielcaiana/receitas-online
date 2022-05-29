@@ -10,7 +10,7 @@
 - 💚 [Nuxtjs](https://nuxtjs.org/)  - The Intuitive Vue Framework
 - 🍇 [Graphql](https://graphql.org/)  - A query language for your API
 - 🍓 [Strapi](https://strapi.io/)  - Design APIs fast, manage content easily.
-- 🍍 [Pinia](https://pinia.vuejs.org/)  - The Vue Store that you will enjoy using
+- 🍍 [Vuex](https://vuex.vuejs.org/)  - The Vue Store that you will enjoy using
 - 🃏 [Jest](https://jestjs.io/)  -  Unit/Snapshot Testing
 - 🧩 [Commitlint](https://commitlint.js.org/#/)  -  helps your team adhering to a commit convention.
 - 🐻‍❄️ [Tailwind](https://tailwindcss.com/)  -  Rapidly build modern websites without ever leaving your HTML.
