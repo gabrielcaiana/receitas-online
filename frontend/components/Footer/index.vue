@@ -1,6 +1,6 @@
 <template>
   <footer
-    class="flex flex-col items-center justify-center py-10 bg-white mt-10 shadow-md shadow-gray-500"
+    class="flex flex-col items-center justify-center py-10 bg-white shadow-md shadow-gray-500"
   >
     <p class="font-body text-gray-500 text-center mb-4">
       Desenvolvido por <span class="font-bold">Gabriel Caiana</span>

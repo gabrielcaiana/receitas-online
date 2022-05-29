@@ -23,8 +23,15 @@
           placeholder="Digite seu email"
           class="mb-4"
         />
-        <ReusableInputPassword class="mb-4" placeholder="Digite uma senha" />
-        <ReusableInputPassword placeholder="Digite a mesma senha" />
+        <ReusableInputPassword
+          class="mb-4"
+          label="Senha"
+          placeholder="Digite uma senha"
+        />
+        <ReusableInputPassword
+          label="Confirmar senha"
+          placeholder="Digite a mesma senha"
+        />
       </div>
 
       <Button label="Criar conta" />
