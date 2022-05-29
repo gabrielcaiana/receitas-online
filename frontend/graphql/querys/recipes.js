@@ -13,6 +13,7 @@ export const recipesQuery = (page = 1, pageSize = 3) => gql`
           description
           ingredients
           likes
+          slug
 
           category {
             data {
@@ -55,6 +56,7 @@ export const recipesByCategorieQuery = (slug) => gql`
           portions
           img
           likes
+          slug
         }
       }
       meta {
@@ -63,6 +65,32 @@ export const recipesByCategorieQuery = (slug) => gql`
           page
           pageSize
           pageCount
+        }
+      }
+    }
+  }
+`
+export const recipesBySlugQuery = (slug) => gql`
+  {
+    recipes(
+      filters: {
+        slug: {
+            eq: "${slug}"
+        }
+      }
+    ) {
+      data {
+        id
+        attributes {
+          name
+          duration
+          portions
+          img
+          description
+          ingredients
+          steps
+          likes
+          slug
         }
       }
     }
@@ -84,6 +112,7 @@ export const recipeQuery = (id) => gql`
           ingredients
           steps
           likes
+          slug
         }
       }
     }
@@ -96,6 +125,7 @@ export const recipeSearchQuery = (term) => gql`
         id
         attributes {
           name
+          slug
           category {
             data {
               id
