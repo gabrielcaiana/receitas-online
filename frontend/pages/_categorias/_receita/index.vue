@@ -1,5 +1,5 @@
 <template>
-  <section class="w-5/6 m-auto">
+  <section class="w-5/6 m-auto py-10">
     <EmptyState
       v-if="!recipe"
       label="A receita não existe, pesquisa por uma nova receita!"
