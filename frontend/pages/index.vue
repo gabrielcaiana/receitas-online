@@ -15,7 +15,7 @@
             name: 'categorias-receita',
             params: {
               categorias: recipe.attributes.category.data.attributes.slug,
-              receita: recipe.id,
+              receita: recipe.attributes.slug,
             },
           }"
         >

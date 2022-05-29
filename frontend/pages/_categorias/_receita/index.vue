@@ -1,5 +1,5 @@
 <template>
-  <section class="w-5/6 m-auto">
+  <section v-if="recipe" class="w-5/6 m-auto">
     <RecipeTitle :title="recipe.name" />
     <div class="grid grid-cols-1 gap-4">
       <RecipeCover :cover="recipe.img" :name="recipe.name" />
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { recipeQuery } from '@/graphql/querys/recipes'
+import { recipesBySlugQuery } from '@/graphql/querys/recipes'
 export default {
   name: 'RecipePage',
 
@@ -37,10 +37,9 @@ export default {
     try {
       const client = app.apolloProvider.defaultClient
       const { data } = await client.query({
-        query: recipeQuery(params.receita),
+        query: recipesBySlugQuery(params.receita),
       })
-
-      recipe = data.recipe.data.attributes
+      recipe = data.recipes.data[0].attributes
     } catch (error) {
       console.log(error)
     }

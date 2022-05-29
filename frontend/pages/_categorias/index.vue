@@ -10,7 +10,7 @@
         <nuxt-link
           :to="{
             name: 'categorias-receita',
-            params: { receita: recipe.id },
+            params: { receita: recipe.attributes.slug },
           }"
         >
           <Card

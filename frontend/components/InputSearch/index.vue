@@ -29,7 +29,7 @@
             name: 'categorias-receita',
             params: {
               categorias: recipe.attributes.category.data.attributes.slug,
-              receita: recipe.id,
+              receita: recipe.attributes.slug,
             },
           }"
           class="py-2 text-gray-500 cursor-pointer hover:text-red-500 transition duration-300 ease-in-out"
@@ -62,7 +62,7 @@ export default {
 
   computed: {
     processChange() {
-      return debounce(() => this.filteredRecipe())
+      return debounce(() => this.filteredRecipe(), 500)
     },
   },
 
