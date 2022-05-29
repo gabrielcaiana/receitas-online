@@ -17,7 +17,7 @@ export default {
 
   css: ['~/assets/css/tailwind.css', '~/assets/css/transitions.css'],
 
-  plugins: ['~/plugins/featherIcons'],
+  plugins: ['~/plugins/featherIcons', '~/plugins/strapi'],
 
   components: true,
 

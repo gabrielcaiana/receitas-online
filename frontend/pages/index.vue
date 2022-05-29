@@ -43,8 +43,8 @@
 import { mapGetters } from 'vuex'
 export default {
   name: 'IndexPage',
-  asyncData({ store }) {
-    store.dispatch('recipes/loadRecipes')
+  async asyncData({ $strapiApi }) {
+    await $strapiApi.loadRecipes()
   },
 
   head() {
@@ -72,7 +72,7 @@ export default {
     changePage(event) {
       const page =
         event === 'next' ? this.pagination.page + 1 : this.pagination.page - 1
-      this.$store.dispatch('recipes/loadRecipes', page)
+      this.$strapiApi.loadRecipes(page)
     },
   },
 }
