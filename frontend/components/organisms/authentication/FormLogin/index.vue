@@ -24,24 +24,7 @@
         />
       </div>
 
-      <div class="flex justify-between">
-        <span class="text-sm text-red-500 hover:underline cursor-pointer"
-          >Esqueceu sua senha?</span
-        >
-      </div>
-      <div>
-        <Button label="Entrar" />
-        <div
-          class="flex gap-6 justify-center text-white w-full bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800 py-3"
-        >
-          <img
-            class="h-5 cursor-pointer"
-            src="https://i.imgur.com/arC60SB.png"
-            alt=""
-          />
-          <button>Entrar com o Google</button>
-        </div>
-      </div>
+      <AtomsButton label="Entrar" />
     </form>
 
     <p class="mt-8 text-gray-500">
