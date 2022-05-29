@@ -23,7 +23,16 @@ export default {
 
   buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/tailwindcss'],
 
-  modules: ['@nuxtjs/pwa', '@nuxtjs/apollo'],
+  modules: [
+    '@nuxtjs/pwa',
+    '@nuxtjs/apollo',
+    '@nuxtjs/axios',
+    '@nuxtjs/auth-next',
+  ],
+
+  auth: {
+    // Options
+  },
 
   apollo: {
     clientConfigs: {
