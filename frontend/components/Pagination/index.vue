@@ -1,18 +1,18 @@
 <template>
   <div class="flex items-center gap-6">
     <ActionButton
-      class="bg-red-500 hover:bg-red-700"
+      :disabled="currentPage === 1"
       icon="arrow-left"
-      @click="previous"
+      @click="$emit('previous')"
     />
     <span
       class="text-gray-500 text-body"
       v-text="`${currentPage} de ${totalPages}`"
     ></span>
     <ActionButton
-      class="bg-red-500 hover:bg-red-700"
+      :disabled="currentPage === totalPages"
       icon="arrow-right"
-      @click="next"
+      @click="$emit('next')"
     />
   </div>
 </template>
@@ -29,16 +29,6 @@ export default {
     totalPages: {
       type: Number,
       required: true,
-    },
-  },
-
-  methods: {
-    next() {
-      alert('next')
-    },
-
-    previous() {
-      alert('previous')
     },
   },
 }
