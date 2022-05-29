@@ -10,7 +10,7 @@
         <nuxt-link
           :to="{
             name: 'categorias-receita',
-            params: { category: $route.params.category, receita: recipe.id },
+            params: { receita: recipe.id },
           }"
         >
           <Card
