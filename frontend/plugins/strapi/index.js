@@ -5,6 +5,8 @@ import {
   recipeSearchQuery,
 } from '@/graphql/querys/recipes'
 
+import { categoriesQuery } from '@/graphql/querys/categories'
+
 export default function ({ app, store }, inject) {
   const client = app.apolloProvider.defaultClient
 
@@ -67,10 +69,25 @@ export default function ({ app, store }, inject) {
     }
   }
 
+  const loadCategories = async () => {
+    try {
+      const { data } = await await client.query({
+        query: categoriesQuery(),
+      })
+
+      return {
+        categories: data.categories.data,
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   inject('strapiApi', {
     loadRecipes,
     loadRecipesByCategorie,
     recipesBySlug,
     recipeSearch,
+    loadCategories,
   })
 }

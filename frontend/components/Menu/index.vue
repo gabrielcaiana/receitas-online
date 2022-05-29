@@ -34,7 +34,6 @@
 </template>
 
 <script>
-import { categoriesQuery } from '@/graphql/querys/categories'
 export default {
   name: 'AppMenu',
 
@@ -43,11 +42,8 @@ export default {
   }),
 
   async fetch() {
-    const { data } = await this.$apollo.query({
-      query: categoriesQuery(),
-    })
-
-    this.menus = data?.categories?.data
+    const { categories } = await this.$strapiApi.loadCategories()
+    this.menus = categories
   },
 }
 </script>
