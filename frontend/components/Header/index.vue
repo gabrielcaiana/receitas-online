@@ -3,7 +3,11 @@
     <div class="flex justify-between items-center flex-auto gap-64">
       <Logo />
       <InputSearch />
-      <Avatar />
+
+      <div class="w-24">
+        <Button label="Entrar" @click.native="$router.push('/login')" />
+      </div>
+      <!-- <Avatar /> -->
     </div>
   </div>
 </template>

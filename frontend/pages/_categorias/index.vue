@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="p-10">
     <EmptyState
       v-if="!recipes.length"
       label="Ainda não foi cadastrada nenhuma receita para essa categoria"

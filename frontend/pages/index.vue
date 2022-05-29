@@ -5,7 +5,7 @@
       label="Ainda não foi cadastrada nenhuma receita para essa categoria"
     />
 
-    <div v-else>
+    <div v-else class="p-10">
       <ul class="flex justify-center flex-wrap gap-8">
         <nuxt-link
           v-for="recipe in recipes"

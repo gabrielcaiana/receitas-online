@@ -1,14 +1,22 @@
 <template>
   <div class="min-h-screen bg-gray-100">
-    <div class="flex">
-      <div class="flex-auto">
-        <Header />
-        <Menu />
-        <main class="p-10 gap-10">
+    <div v-if="logged">
+      <Header />
+      <Menu />
+      <main>
+        <transition name="slide" mode="out-in">
           <nuxt />
-        </main>
-        <Footer />
-      </div>
+        </transition>
+      </main>
+      <Footer v-if="logged" />
+    </div>
+
+    <div v-else>
+      <main>
+        <transition name="slide" mode="out-in">
+          <nuxt />
+        </transition>
+      </main>
     </div>
   </div>
 </template>
@@ -16,5 +24,11 @@
 <script>
 export default {
   name: 'AppLayout',
+
+  data() {
+    return {
+      logged: true,
+    }
+  },
 }
 </script>
