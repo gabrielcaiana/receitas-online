@@ -28,6 +28,7 @@ export default {
     '@nuxtjs/apollo',
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
+    '@nuxtjs/dotenv',
   ],
 
   auth: {
@@ -37,7 +38,8 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: 'http://localhost:1337/graphql',
+        httpEndpoint:
+          process.env.STRAPI_ENDPOINT || 'http://localhost:1337/graphql',
       },
     },
   },
