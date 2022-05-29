@@ -21,11 +21,11 @@ export const mutations = {
 }
 
 export const actions = {
-  async loadRecipes({ commit }, page = 1, pageSize = 2) {
+  async loadRecipes({ commit }, page) {
     try {
       const client = this.app.apolloProvider.defaultClient
       const { data } = await client.query({
-        query: recipesQuery(page, pageSize),
+        query: recipesQuery(page),
       })
 
       commit('SET_RECIPES', data.recipes.data)
