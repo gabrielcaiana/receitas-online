@@ -42,6 +42,10 @@
       "relation": "manyToOne",
       "target": "api::categorie.categorie",
       "inversedBy": "recipes"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
     }
   }
 }
