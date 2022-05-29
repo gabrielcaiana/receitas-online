@@ -35,6 +35,12 @@ Install dependencies:
 yarn install
 ```
 
+Updating dependencies:
+
+```sh
+yarn upgrade-interactive --latest
+```
+
 ## Testing
 
 Run Vue components unit tests:
