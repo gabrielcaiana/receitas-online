@@ -15,7 +15,7 @@ export default {
     link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }],
   },
 
-  css: ['~/assets/css/tailwind.css'],
+  css: ['~/assets/css/tailwind.css', '~/assets/css/transitions.css'],
 
   plugins: ['~/plugins/featherIcons'],
 
