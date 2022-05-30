@@ -19,6 +19,7 @@
 <script>
 export default {
   name: 'AppLogin',
+  layout: 'auth',
 
   head() {
     return {

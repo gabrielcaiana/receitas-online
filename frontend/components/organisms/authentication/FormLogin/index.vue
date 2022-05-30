@@ -10,7 +10,7 @@
 
       <div class="my-5">
         <MoleculesInputText
-          v-model="form.email"
+          v-model="form.identifier"
           type="email"
           name="email"
           label="Email"
@@ -43,15 +43,27 @@ export default {
   data() {
     return {
       form: {
-        email: '',
+        identifier: '',
         password: '',
       },
     }
   },
 
   methods: {
-    login() {
-      console.log(this.form)
+    async login() {
+      try {
+        await this.$auth.loginWith('local', {
+          data: this.form,
+        })
+        this.$toast.success('Login realizado com sucesso!', {
+          duration: 2000,
+        })
+      } catch (error) {
+        console.log(error)
+        this.$toast.error('Algo deu errado, tente novamente!', {
+          duration: 4000,
+        })
+      }
     },
   },
 }

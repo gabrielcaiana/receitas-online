@@ -4,10 +4,10 @@
       <AtomsLogo />
       <MoleculesInputSearch />
 
-      <div class="w-24">
+      <MoleculesAvatar v-if="$auth.loggedIn" :username="$auth.user.username" />
+      <div v-else class="w-24">
         <AtomsButton label="Entrar" @click.native="$router.push('/login')" />
       </div>
-      <!-- <MoleculesAvatar /> -->
     </div>
   </div>
 </template>
