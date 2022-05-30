@@ -28,18 +28,43 @@ export default {
     '@nuxtjs/apollo',
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
-    '@nuxtjs/dotenv',
+    '@nuxtjs/toast',
   ],
 
   auth: {
-    // Options
+    strategies: {
+      local: {
+        token: {
+          property: 'jwt',
+          global: true,
+          type: 'Bearer',
+        },
+        user: {
+          property: false,
+        },
+        endpoints: {
+          login: { url: 'api/auth/local', method: 'post' },
+          logout: false,
+          user: { url: 'api/users/me', method: 'get' },
+        },
+      },
+    },
+    redirect: {
+      login: '/',
+      logout: '/',
+      callback: '/',
+      home: '/',
+    },
+  },
+
+  axios: {
+    baseUrl: 'http://localhost:1337/',
   },
 
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint:
-          process.env.STRAPI_ENDPOINT || 'http://localhost:1337/graphql',
+        httpEndpoint: 'http://localhost:1337/graphql',
       },
     },
   },
