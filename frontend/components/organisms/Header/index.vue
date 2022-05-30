@@ -5,8 +5,20 @@
       <MoleculesInputSearch />
 
       <MoleculesAvatar v-if="$auth.loggedIn" :username="$auth.user.username" />
-      <div v-else class="w-24">
-        <AtomsButton label="Entrar" @click.native="$router.push('/login')" />
+      <div v-else class="flex gap-2 w-64">
+        <AtomsButton
+          primary
+          type="reset"
+          label="Entrar"
+          @click.native="$router.push('/login')"
+        />
+
+        <AtomsButton
+          outlined
+          type="reset"
+          label="Cadastre-se"
+          @click.native="$router.push('/register')"
+        />
       </div>
     </div>
   </div>

@@ -24,7 +24,7 @@
         />
       </div>
 
-      <AtomsButton label="Entrar" />
+      <AtomsButton primary label="Entrar" />
     </form>
 
     <p class="mt-8 text-gray-500">

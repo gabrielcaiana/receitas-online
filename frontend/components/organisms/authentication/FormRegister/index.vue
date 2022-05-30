@@ -38,7 +38,13 @@
         />
       </div>
 
-      <AtomsButton label="Criar conta" />
+      <AtomsButton class="mb-4" primary label="Criar conta" />
+      <AtomsButton
+        outlined
+        type="reset"
+        label="Voltar"
+        @click.native="$router.go(-1)"
+      />
     </form>
   </div>
 </template>
