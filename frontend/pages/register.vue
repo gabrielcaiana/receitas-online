@@ -19,6 +19,7 @@
 <script>
 export default {
   name: 'AppRegister',
+  layout: 'auth',
 
   head() {
     return {
