@@ -86,13 +86,13 @@ export default function ({ app, store }, inject) {
   const register = async (user) => {
     try {
       const { data } = await client.mutate({
-        mutation: registerUserMutation(user)
+        mutation: registerUserMutation(user),
       })
-      
+
       return {
-        user: data
+        user: data,
       }
-    }catch(error) {
+    } catch (error) {
       console.log(error)
     }
   }
@@ -103,6 +103,6 @@ export default function ({ app, store }, inject) {
     recipesBySlug,
     recipeSearch,
     loadCategories,
-    register
+    register,
   })
 }

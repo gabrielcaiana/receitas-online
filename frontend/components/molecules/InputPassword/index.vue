@@ -3,7 +3,10 @@
     <AtomsLabel id="password" :label="label" />
     <input
       id="password"
-      class="px-4 w-full border-2 py-2 rounded-md text-sm outline-none"
+      :class="[
+        'px-4 w-full py-2 rounded-md text-sm outline-none border',
+        errors.length && 'border-red-500',
+      ]"
       type="password"
       name="password"
       :value="value"
@@ -11,6 +14,7 @@
       v-bind="$attrs"
       @input="updateValue"
     />
+    <span class="text-red-500 text-sm" v-text="errors[0]"></span>
   </div>
 </template>
 
@@ -31,6 +35,10 @@ export default {
     placeholder: {
       type: String,
       default: '',
+    },
+    errors: {
+      type: Array,
+      default: () => [],
     },
   },
 

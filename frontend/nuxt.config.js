@@ -17,7 +17,11 @@ export default {
 
   css: ['~/assets/css/tailwind.css', '~/assets/css/transitions.css'],
 
-  plugins: ['~/plugins/featherIcons', '~/plugins/strapi'],
+  plugins: [
+    '~/plugins/featherIcons',
+    '~/plugins/strapi',
+    '~/plugins/vee-validate',
+  ],
 
   components: true,
 
@@ -82,5 +86,7 @@ export default {
     duration: 5000,
   },
 
-  build: {},
+  build: {
+    transpile: ['vee-validate'],
+  },
 }
