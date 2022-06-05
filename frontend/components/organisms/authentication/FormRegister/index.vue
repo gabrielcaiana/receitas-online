@@ -44,7 +44,7 @@
         <ValidationProvider
           v-slot="{ errors }"
           mode="passive"
-          rules="required|minmax:8,12|password:@confirm"
+          rules="required|minmax:8,16|password:@confirm"
           name="senha"
         >
           <MoleculesInputPassword
@@ -58,7 +58,7 @@
         <ValidationProvider
           v-slot="{ errors }"
           mode="passive"
-          rules="required|minmax:8,12"
+          rules="required|minmax:8,16"
           name="confirm"
         >
           <MoleculesInputPassword
