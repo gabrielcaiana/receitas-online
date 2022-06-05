@@ -6,10 +6,12 @@ import {
 } from '@/graphql/querys/recipes'
 
 import { categoriesQuery } from '@/graphql/querys/categories'
+import { registerUserMutation } from '@/graphql/mutations/register'
 
 export default function ({ app, store }, inject) {
   const client = app.apolloProvider.defaultClient
 
+  // recipes
   const loadRecipes = async (page) => {
     try {
       const { data } = await client.query({
@@ -27,7 +29,6 @@ export default function ({ app, store }, inject) {
       console.log(error)
     }
   }
-
   const loadRecipesByCategorie = async (params) => {
     try {
       const { data } = await client.query({
@@ -42,7 +43,6 @@ export default function ({ app, store }, inject) {
       console.log(error)
     }
   }
-
   const recipesBySlug = async (params) => {
     try {
       const { data } = await client.query({
@@ -55,7 +55,6 @@ export default function ({ app, store }, inject) {
       console.log(error)
     }
   }
-
   const recipeSearch = async (search) => {
     try {
       const { data } = await client.query({
@@ -68,10 +67,10 @@ export default function ({ app, store }, inject) {
       console.log(error)
     }
   }
-
+  // categorie
   const loadCategories = async () => {
     try {
-      const { data } = await await client.query({
+      const { data } = await client.query({
         query: categoriesQuery(),
       })
 
@@ -83,11 +82,27 @@ export default function ({ app, store }, inject) {
     }
   }
 
+  // auth
+  const register = async (user) => {
+    try {
+      const { data } = await client.mutate({
+        mutation: registerUserMutation(user)
+      })
+      
+      return {
+        user: data
+      }
+    }catch(error) {
+      console.log(error)
+    }
+  }
+
   inject('strapiApi', {
     loadRecipes,
     loadRecipesByCategorie,
     recipesBySlug,
     recipeSearch,
     loadCategories,
+    register
   })
 }

@@ -18,3 +18,4 @@ export const registerUserMutation = ({ username, email, password }) => gql`
     }
   }
 `;
+
