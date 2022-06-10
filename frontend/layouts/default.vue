@@ -2,7 +2,7 @@
   <div class="min-h-screen bg-gray-100">
     <OrganismsHeader />
     <OrganismsMenu />
-    <main>
+    <main class="min-h-screen">
       <transition name="slide" mode="out-in">
         <nuxt />
       </transition>

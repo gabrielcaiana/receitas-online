@@ -6,8 +6,8 @@
     />
 
     <template v-else>
-      <MoleculesRecipeTitle :title="recipe.name" />
-      <div class="grid grid-cols-1 gap-4">
+      <AtomsTitle align-center :title="recipe.name" />
+      <div class="grid grid-cols-1 gap-4 mt-10">
         <MoleculesRecipeCover :cover="recipe.img" :name="recipe.name" />
         <div class="bg-white p-10 rounded-md">
           <div>
@@ -15,6 +15,7 @@
               <MoleculesRecipeLikes :likes="recipe.likes" />
               <MoleculesRecipeDuration :duration="recipe.duration" />
               <MoleculesRecipePortions :portions="recipe.portions" />
+              <MoleculesRecipeAuthor :author="author.username" />
             </div>
             <AtomsDivider />
 
@@ -38,10 +39,11 @@ export default {
   name: 'RecipePage',
 
   async asyncData({ $strapiApi, params }) {
-    const response = await $strapiApi.recipesBySlug(params)
+    const { recipe } = await $strapiApi.recipesBySlug(params)
 
     return {
-      recipe: response?.recipe,
+      recipe,
+      author: recipe.author?.data?.attributes,
     }
   },
 
