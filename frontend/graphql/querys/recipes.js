@@ -14,7 +14,13 @@ export const recipesQuery = (page = 1, pageSize = 3) => gql`
           ingredients
           likes
           slug
-
+          author {
+            data {
+              attributes {
+                username
+              }
+            }
+          }
           category {
             data {
               id
@@ -57,6 +63,13 @@ export const recipesByCategorieQuery = (slug) => gql`
           img
           likes
           slug
+          author {
+            data {
+              attributes {
+                username
+              }
+            }
+          }
         }
       }
       meta {
@@ -91,6 +104,13 @@ export const recipesBySlugQuery = (slug) => gql`
           steps
           likes
           slug
+          author {
+            data {
+              attributes {
+                username
+              }
+            }
+          }
         }
       }
     }
@@ -104,6 +124,13 @@ export const recipeSearchQuery = (term) => gql`
         attributes {
           name
           slug
+          author {
+            data {
+              attributes {
+                username
+              }
+            }
+          }
           category {
             data {
               id
