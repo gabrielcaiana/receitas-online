@@ -46,6 +46,12 @@
     "slug": {
       "type": "uid",
       "targetField": "name"
+    },
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "recipes"
     }
   }
 }
