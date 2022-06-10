@@ -3,6 +3,7 @@ import {
   recipesByCategorieQuery,
   recipesBySlugQuery,
   recipeSearchQuery,
+  recipesByUserQuery,
 } from '@/graphql/querys/recipes'
 
 import { categoriesQuery } from '@/graphql/querys/categories'
@@ -55,6 +56,18 @@ export default function ({ app, store }, inject) {
       console.log(error)
     }
   }
+  const recipesByUser = async (id) => {
+    try {
+      const { data } = await client.query({
+        query: recipesByUserQuery(id),
+      })
+      return {
+        recipe: data.recipes.data,
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
   const recipeSearch = async (search) => {
     try {
       const { data } = await client.query({
@@ -101,6 +114,7 @@ export default function ({ app, store }, inject) {
     loadRecipes,
     loadRecipesByCategorie,
     recipesBySlug,
+    recipesByUser,
     recipeSearch,
     loadCategories,
     register,

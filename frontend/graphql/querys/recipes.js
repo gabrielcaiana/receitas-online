@@ -116,6 +116,41 @@ export const recipesBySlugQuery = (slug) => gql`
     }
   }
 `
+export const recipesByUserQuery = (id) => gql`
+  {
+    recipes(
+      filters: {
+        author: {
+           id: {
+            eq: "${id}"
+           }
+        }
+      }
+    ) {
+      data {
+        id
+        attributes {
+          name
+          duration
+          portions
+          img
+          description
+          ingredients
+          steps
+          likes
+          slug
+          author {
+            data {
+              attributes {
+                username
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
 export const recipeSearchQuery = (term) => gql`
   {
     recipes(filters: { name: { contains: "${term}" } }) {
