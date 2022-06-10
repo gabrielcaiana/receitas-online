@@ -12,7 +12,6 @@ export default {
 
   async asyncData({ $strapiApi, $auth }) {
     const id = $auth.user.id
-    console.log(id)
     const { recipe } = await $strapiApi.recipesByUser(id)
 
     return {
