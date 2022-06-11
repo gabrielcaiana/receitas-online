@@ -33,10 +33,10 @@
                     <div class="font-semibold text-center">Likes</div>
                   </th>
                   <th class="p-2 whitespace-nowrap">
-                    <div class="font-semibold text-center">Criada em:</div>
+                    <div class="font-semibold text-center">Publicada</div>
                   </th>
                   <th class="p-2 whitespace-nowrap">
-                    <div class="font-semibold text-center">Atualizada em:</div>
+                    <div class="font-semibold text-center">Atualizada</div>
                   </th>
                   <th class="p-2 whitespace-nowrap">
                     <div class="font-semibold text-center">Acões</div>
