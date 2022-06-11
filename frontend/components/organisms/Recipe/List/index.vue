@@ -62,8 +62,11 @@
                     </div>
                   </td>
                   <td class="p-2 whitespace-nowrap">
-                    <div class="text-lg text-center cursor-pointer">
-                      <AtomsIcon name="edit" color="#eF4444" />
+                    <div
+                      class="text-center cursor-pointer flex gap-2 justify-center"
+                    >
+                      <AtomsIcon name="edit" color="#333333" />
+                      <AtomsIcon name="trash" color="#eF4444" />
                     </div>
                   </td>
                 </tr>
