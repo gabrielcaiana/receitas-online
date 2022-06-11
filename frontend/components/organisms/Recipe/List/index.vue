@@ -33,6 +33,12 @@
                     <div class="font-semibold text-center">Likes</div>
                   </th>
                   <th class="p-2 whitespace-nowrap">
+                    <div class="font-semibold text-center">Criada em:</div>
+                  </th>
+                  <th class="p-2 whitespace-nowrap">
+                    <div class="font-semibold text-center">Atualizada em:</div>
+                  </th>
+                  <th class="p-2 whitespace-nowrap">
                     <div class="font-semibold text-center">Acões</div>
                   </th>
                 </tr>
@@ -57,8 +63,18 @@
                     </div>
                   </td>
                   <td class="p-2 whitespace-nowrap">
-                    <div class="text-center font-medium text-gray-800">
+                    <div class="text-left font-medium text-gray-800">
                       {{ recipe.attributes.likes }}
+                    </div>
+                  </td>
+                  <td class="p-2 whitespace-nowrap">
+                    <div class="text-left font-medium text-gray-800">
+                      {{ recipe.attributes.createdAt }}
+                    </div>
+                  </td>
+                  <td class="p-2 whitespace-nowrap">
+                    <div class="text-left font-medium text-gray-800">
+                      {{ recipe.attributes.updatedAt }}
                     </div>
                   </td>
                   <td class="p-2 whitespace-nowrap">

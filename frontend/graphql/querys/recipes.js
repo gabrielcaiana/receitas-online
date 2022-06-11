@@ -139,6 +139,8 @@ export const recipesByUserQuery = (id) => gql`
           steps
           likes
           slug
+          createdAt
+          updatedAt
           author {
             data {
               attributes {
