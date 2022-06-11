@@ -63,18 +63,18 @@
                     </div>
                   </td>
                   <td class="p-2 whitespace-nowrap">
-                    <div class="text-left font-medium text-gray-800">
+                    <div class="text-center font-medium text-gray-800">
                       {{ recipe.attributes.likes }}
                     </div>
                   </td>
                   <td class="p-2 whitespace-nowrap">
-                    <div class="text-left font-medium text-gray-800">
-                      {{ recipe.attributes.createdAt }}
+                    <div class="text-center font-medium text-gray-800">
+                      {{ shortDate(recipe.attributes.createdAt) }}
                     </div>
                   </td>
                   <td class="p-2 whitespace-nowrap">
-                    <div class="text-left font-medium text-gray-800">
-                      {{ recipe.attributes.updatedAt }}
+                    <div class="text-center font-medium text-gray-800">
+                      {{ shortDate(recipe.attributes.updatedAt) }}
                     </div>
                   </td>
                   <td class="p-2 whitespace-nowrap">
@@ -97,6 +97,7 @@
 
 <script>
 import { formatedTime } from '~/utils/formatedTime'
+import { shortDate } from '~/utils/shortDate'
 export default {
   name: 'RecipeList',
 
@@ -114,6 +115,7 @@ export default {
 
   methods: {
     formatedTime,
+    shortDate,
   },
 }
 </script>
