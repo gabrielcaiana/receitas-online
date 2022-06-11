@@ -18,5 +18,11 @@ export default {
       recipes: recipe,
     }
   },
+
+  head() {
+    return {
+      title: 'Perfil',
+    }
+  },
 }
 </script>

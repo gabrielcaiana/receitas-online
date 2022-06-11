@@ -12,7 +12,7 @@ export default {
         content: 'Site de receitas online',
       },
     ],
-    link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }],
+    link: [{ rel: 'icon', type: 'image/png', href: 'favicon.png' }],
   },
 
   css: [
