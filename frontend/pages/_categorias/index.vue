@@ -5,7 +5,7 @@
       label="Ainda não foi cadastrada nenhuma receita para essa categoria"
     />
 
-    <ul>
+    <ul class="flex gap-6">
       <li v-for="recipe in recipes" :key="recipe.id" class="w-80">
         <nuxt-link
           :to="{
@@ -49,6 +49,10 @@ export default {
         },
       ],
     }
+  },
+
+  mounted() {
+    console.log(this.recipes)
   },
 }
 </script>
