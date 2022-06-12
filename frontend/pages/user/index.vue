@@ -8,8 +8,6 @@
 <script>
 export default {
   name: 'AppUser',
-  middleware: 'auth',
-
   async asyncData({ $strapiApi, $auth }) {
     const id = $auth.user.id
     const { recipe } = await $strapiApi.recipesByUser(id)
