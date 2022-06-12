@@ -8,6 +8,7 @@
         'bg-transparent border-2 border-red-500 hover:bg-red-100 focus:ring-gray-300 text-red-500',
       disabled && 'bg-gray-300 cursor-not-allowed',
     ]"
+    @click="$emit('click')"
     v-text="label"
   ></button>
 </template>

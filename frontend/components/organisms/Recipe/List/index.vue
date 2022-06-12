@@ -9,7 +9,11 @@
         >
           <h2 class="font-semibold text-gray-800" v-text="title"></h2>
           <div class="w-56">
-            <AtomsButton label="Cadastrar nova receita" primary />
+            <AtomsButton
+              label="Cadastrar nova receita"
+              primary
+              @click="$router.push('/user/new-recipe')"
+            />
           </div>
         </header>
 
