@@ -1,6 +1,11 @@
 <template>
   <section class="m-auto p-10">
-    <AtomsTitle class="mb-10" title="Cadastrar nova receita" />
+    <header class="flex justify-between">
+      <AtomsTitle class="mb-10" title="Cadastrar nova receita" />
+      <div class="w-40">
+        <AtomsButton label="Voltar" outlined @click="$router.go(-1)" />
+      </div>
+    </header>
   </section>
 </template>
 
