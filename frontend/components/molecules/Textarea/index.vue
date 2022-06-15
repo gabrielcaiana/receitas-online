@@ -2,17 +2,16 @@
   <div>
     <label
       class="block text-md mb-2 text-gray-700"
-      :for="label"
+      for="email"
       v-text="label"
     ></label>
-    <input
-      :id="type"
+    <textarea
+      :rows="rows"
       :class="[
         'px-4 w-full py-2 rounded-md text-sm outline-none border',
         errors.length && 'border-red-500',
       ]"
       :value="value"
-      :type="type"
       :name="name"
       :placeholder="placeholder"
       v-bind="$attrs"
@@ -32,10 +31,6 @@ export default {
       type: [String, Number],
       default: '',
     },
-    type: {
-      type: String,
-      default: '',
-    },
     name: {
       type: String,
       required: true,
@@ -47,6 +42,10 @@ export default {
     placeholder: {
       type: String,
       default: '',
+    },
+    rows: {
+      type: Number,
+      default: 3,
     },
     errors: {
       type: Array,

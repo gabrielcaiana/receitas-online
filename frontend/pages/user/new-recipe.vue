@@ -7,13 +7,21 @@
       </div>
     </header>
 
-    <OrganismsRecipeCreate />
+    <OrganismsRecipeCreate :options="categories" />
   </section>
 </template>
 
 <script>
 export default {
   name: 'NewRecipe',
+
+  async asyncData({ $strapiApi }) {
+    const { categories } = await $strapiApi.loadCategories()
+
+    return {
+      categories,
+    }
+  },
 
   head() {
     return {

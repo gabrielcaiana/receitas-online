@@ -1,30 +1,31 @@
 <template>
   <div>
-    <label
-      class="block text-md mb-2 text-gray-700"
-      :for="label"
-      v-text="label"
-    ></label>
-    <input
-      :id="type"
+    <AtomsLabel id="countries" label="Categoria" />
+    <select
+      v-bind="$attrs"
+      id="countries"
+      name="countries"
+      :value="value"
       :class="[
         'px-4 w-full py-2 rounded-md text-sm outline-none border',
         errors.length && 'border-red-500',
       ]"
-      :value="value"
-      :type="type"
-      :name="name"
-      :placeholder="placeholder"
-      v-bind="$attrs"
       @input="updateValue"
-    />
+    >
+      <!-- <option v-for="(option, index) in options" :key="index" v:alue="">
+        Choose a country
+      </option> -->
+    </select>
+
+    <pre>{{ options }}</pre>
+
     <span class="text-red-500 text-sm" v-text="errors[0]"></span>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'AppInputText',
+  name: 'AppInputSelect',
   inheritAttrs: false,
 
   props: {
@@ -32,21 +33,13 @@ export default {
       type: [String, Number],
       default: '',
     },
-    type: {
-      type: String,
-      default: '',
-    },
-    name: {
-      type: String,
-      required: true,
-    },
     label: {
       type: String,
       required: true,
     },
-    placeholder: {
-      type: String,
-      default: '',
+    options: {
+      type: Array,
+      required: true,
     },
     errors: {
       type: Array,
@@ -55,8 +48,10 @@ export default {
   },
 
   methods: {
-    updateValue(event) {
-      this.$emit('input', event.target.value)
+    methods: {
+      updateValue(event) {
+        this.$emit('input', event.target.value)
+      },
     },
   },
 }
