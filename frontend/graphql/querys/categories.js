@@ -4,6 +4,7 @@ export const categoriesQuery = () => gql`
   {
     categories {
       data {
+        id
         attributes {
           slug
           name

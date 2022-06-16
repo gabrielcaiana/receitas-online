@@ -34,24 +34,40 @@
             v-slot="{ errors }"
             name="duration"
             mode="passive"
-            rules="required|min:6"
+            rules="required|min:1"
             class="w-full"
           >
-            <MoleculesInputText
-              v-model="recipe.duration"
-              type="number"
-              name="duration"
-              label="Tempo de preparo"
-              placeholder="Informe o tempo de preparo em minutos"
-              :errors="errors"
-            />
+            <div class="relative">
+              <MoleculesInputText
+                v-model="recipe.duration"
+                type="number"
+                name="duration"
+                label="Tempo de preparo"
+                placeholder="Informe em minutos"
+                :errors="errors"
+              />
+              <div
+                class="flex items-center gap-1 absolute right-4 top-9 outline-none"
+              >
+                <AtomsIcon
+                  name="clock"
+                  color="#6b7280"
+                  size="16"
+                  class="mb-1"
+                />
+                <span
+                  class="text-sm text-gray-500"
+                  v-text="formatedTime(recipe.duration)"
+                ></span>
+              </div>
+            </div>
           </ValidationProvider>
 
           <ValidationProvider
             v-slot="{ errors }"
             name="portions"
             mode="passive"
-            rules="required|min:6"
+            rules="required|min:1"
             class="w-full"
           >
             <MoleculesInputText
@@ -87,15 +103,17 @@
             v-slot="{ errors }"
             name="category"
             mode="passive"
-            rules="required|min:6"
+            rules="required"
             class="w-full"
           >
             <MoleculesInputSelect
               v-model="recipe.category"
-              :options="categories"
+              :options="options"
+              label="Categorias"
               :errors="errors"
             />
           </ValidationProvider>
+          {{ recipe.category }}
         </div>
 
         <ValidationProvider
@@ -120,7 +138,7 @@
             v-for="(ingredient, index) in recipe.ingredients"
             v-slot="{ errors }"
             :key="`${index} ingrediente`"
-            name="ingredient"
+            :name="`${ingredient}-${index}`"
             mode="passive"
             rules="required|min:6"
             class="w-full"
@@ -128,10 +146,10 @@
             <MoleculesInputText
               v-model="recipe.ingredients[index]"
               type="text"
-              name="ingredient"
+              :name="`${ingredient}-${index}`"
               :label="`Ingrediente ${index + 1}`"
               placeholder="Digite o ingrediente"
-              :errors="errors[index]"
+              :errors="errors"
             />
           </ValidationProvider>
 
@@ -149,7 +167,7 @@
             v-for="(step, index) in recipe.steps"
             v-slot="{ errors }"
             :key="`${index} passo`"
-            name="step"
+            :name="`${step}-${step}`"
             mode="passive"
             rules="required|min:6"
             class="w-full"
@@ -157,10 +175,10 @@
             <MoleculesInputText
               v-model="recipe.steps[index]"
               type="text"
-              name="step"
+              :name="`${step}-${step}`"
               :label="`Passo ${index + 1}`"
               placeholder="Digite o passo"
-              :errors="errors[index]"
+              :errors="errors"
             />
           </ValidationProvider>
 
@@ -172,8 +190,6 @@
             <AtomsIcon name="plus" color="#ef4444" />
           </div>
         </div>
-        <p v-text="recipe.category"></p>
-
         <AtomsButton label="Finalizar cadastro" primary />
       </form>
     </ValidationObserver>
@@ -181,11 +197,12 @@
 </template>
 
 <script>
+import { formatedTime } from '~/utils/formatedTime'
 export default {
   name: 'RecipeCreate',
 
   props: {
-    categories: {
+    options: {
       type: Array,
       required: true,
     },
@@ -199,15 +216,26 @@ export default {
         description: '',
         ingredients: [''],
         steps: [''],
-        category: 1,
+        category: null,
       }),
     },
   },
 
   methods: {
+    formatedTime,
     addItem(item) {
       if (this.recipe[item] === null) this.recipe[item] = []
       this.recipe[item].push('')
+    },
+
+    create() {
+      this.$refs.form.validate().then((success) => {
+        if (success) {
+          console.log(this.recipe)
+        } else {
+          console.log('Falhou')
+        }
+      })
     },
   },
 }
