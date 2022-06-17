@@ -6,6 +6,8 @@ import {
   recipesByUserQuery,
 } from '@/graphql/querys/recipes'
 
+import { createRecipeMutation } from '~/graphql/mutations/recipes'
+
 import { categoriesQuery } from '@/graphql/querys/categories'
 import { registerUserMutation } from '@/graphql/mutations/register'
 
@@ -80,6 +82,22 @@ export default function ({ app, store }, inject) {
       console.log(error)
     }
   }
+
+  const createRecipe = async (recipe) => {
+    try {
+      const token = app.$auth.strategy.token.get()
+      const response = await client.mutate({
+        context: {
+          headers: { authorization: token },
+        },
+        mutation: createRecipeMutation(recipe),
+      })
+      console.log(response)
+      return response
+    } catch (error) {
+      console.log(error)
+    }
+  }
   // categorie
   const loadCategories = async () => {
     try {
@@ -116,6 +134,7 @@ export default function ({ app, store }, inject) {
     recipesBySlug,
     recipesByUser,
     recipeSearch,
+    createRecipe,
     loadCategories,
     register,
   })

@@ -19,8 +19,8 @@ export const createRecipeMutation = ({
         portions: ${portions}
         img: "${img}"
         description: "${description}"
-        ingredients: ${ingredients}
-        steps: ${steps}
+        ingredients: "${ingredients}"
+        steps: "${steps}"
         category: ${category}
         author: ${author}
       }

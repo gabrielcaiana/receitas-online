@@ -32,7 +32,7 @@
 
           <ValidationProvider
             v-slot="{ errors }"
-            name="duration"
+            name="tempo de preparo"
             mode="passive"
             rules="required|min:1"
             class="w-full"
@@ -65,7 +65,7 @@
 
           <ValidationProvider
             v-slot="{ errors }"
-            name="portions"
+            name="porções"
             mode="passive"
             rules="required|min:1"
             class="w-full"
@@ -84,7 +84,7 @@
         <div class="flex gap-3">
           <ValidationProvider
             v-slot="{ errors }"
-            name="img"
+            name="imagem"
             mode="passive"
             rules="required|min:6"
             class="w-full"
@@ -101,7 +101,7 @@
 
           <ValidationProvider
             v-slot="{ errors }"
-            name="category"
+            name="categoria"
             mode="passive"
             rules="required"
             class="w-full"
@@ -113,12 +113,11 @@
               :errors="errors"
             />
           </ValidationProvider>
-          {{ recipe.category }}
         </div>
 
         <ValidationProvider
           v-slot="{ errors }"
-          name="description"
+          name="descrição"
           mode="passive"
           rules="required|min:6"
         >
@@ -217,6 +216,7 @@ export default {
         ingredients: [''],
         steps: [''],
         category: null,
+        author: null,
       }),
     },
   },
@@ -229,11 +229,32 @@ export default {
     },
 
     create() {
-      this.$refs.form.validate().then((success) => {
+      this.$refs.form.validate().then(async (success) => {
         if (success) {
-          console.log(this.recipe)
+          try {
+            const data = {
+              ...this.recipe,
+              author: this.$auth.user.id,
+              duration: Number(this.recipe.duration),
+              portions: Number(this.recipe.portions),
+            }
+
+            const response = await this.$strapiApi.createRecipe(data)
+
+            if (response) {
+              this.$toast.success('Receita cadastrada com sucesso!', {
+                duration: 2000,
+              })
+            }
+          } catch (error) {
+            this.$toast.error(error, {
+              duration: 4000,
+            })
+          }
         } else {
-          console.log('Falhou')
+          this.$toast.error('Preencha os campos em destaque corretamente!', {
+            duration: 4000,
+          })
         }
       })
     },
