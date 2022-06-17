@@ -75,6 +75,11 @@ export default {
         httpEndpoint: 'http://localhost:1337/graphql',
       },
     },
+    defaultOptions: {
+      query: {
+        fetchPolicy: 'no-cache',
+      },
+    },
   },
 
   pwa: {

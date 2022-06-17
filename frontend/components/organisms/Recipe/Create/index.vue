@@ -245,6 +245,8 @@ export default {
               this.$toast.success('Receita cadastrada com sucesso!', {
                 duration: 2000,
               })
+
+              this.$router.push('/user')
             }
           } catch (error) {
             this.$toast.error(error, {
