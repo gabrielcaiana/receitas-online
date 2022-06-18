@@ -13,29 +13,37 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {}
     },
     "duration": {
-      "type": "integer"
+      "type": "integer",
+      "pluginOptions": {}
     },
     "portions": {
-      "type": "integer"
+      "type": "integer",
+      "pluginOptions": {}
     },
     "img": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {}
     },
     "description": {
-      "type": "text"
+      "type": "text",
+      "pluginOptions": {}
     },
     "ingredients": {
-      "type": "json"
+      "type": "json",
+      "pluginOptions": {}
     },
     "steps": {
-      "type": "json"
+      "type": "json",
+      "pluginOptions": {}
     },
     "likes": {
       "type": "biginteger",
-      "default": "0"
+      "default": "0",
+      "pluginOptions": {}
     },
     "category": {
       "type": "relation",
