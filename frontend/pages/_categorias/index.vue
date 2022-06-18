@@ -5,7 +5,7 @@
       label="Ainda não foi cadastrada nenhuma receita para essa categoria"
     />
 
-    <ul class="flex gap-6">
+    <ul class="flex flex-wrap gap-5">
       <li v-for="recipe in recipes" :key="recipe.id" class="w-80">
         <nuxt-link
           :to="{

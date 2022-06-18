@@ -92,7 +92,6 @@ export default function ({ app, store }, inject) {
         },
         mutation: createRecipeMutation(recipe),
       })
-      console.log(response)
       return response
     } catch (error) {
       console.log(error)

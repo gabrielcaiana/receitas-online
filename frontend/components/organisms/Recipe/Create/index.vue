@@ -232,22 +232,24 @@ export default {
       this.$refs.form.validate().then(async (success) => {
         if (success) {
           try {
-            const data = {
+            const recipe = {
               ...this.recipe,
               author: this.$auth.user.id,
               duration: Number(this.recipe.duration),
               portions: Number(this.recipe.portions),
             }
 
-            const response = await this.$strapiApi.createRecipe(data)
+            const response = await this.$strapiApi.createRecipe(recipe)
 
             if (response) {
               this.$toast.success('Receita cadastrada com sucesso!', {
                 duration: 2000,
               })
-
               this.$router.push('/user')
-            }
+            } else
+              this.$toast.error('Verifique as informações e tente novamente!', {
+                duration: 2000,
+              })
           } catch (error) {
             this.$toast.error(error, {
               duration: 4000,
