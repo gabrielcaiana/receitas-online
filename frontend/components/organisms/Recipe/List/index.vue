@@ -12,7 +12,7 @@
             <AtomsButton
               label="Cadastrar nova receita"
               primary
-              @click="$router.push('/user/new-recipe')"
+              @click="$router.push({ name: 'user-recipe-create' })"
             />
           </div>
         </header>
@@ -85,7 +85,16 @@
                     <div
                       class="text-center cursor-pointer flex gap-2 justify-center"
                     >
-                      <AtomsIcon name="edit" color="#333333" />
+                      <nuxt-link
+                        :to="{
+                          name: 'user-recipe-edit-slug',
+                          params: {
+                            slug: recipe.attributes.slug,
+                          },
+                        }"
+                      >
+                        <AtomsIcon name="edit" color="#333333" />
+                      </nuxt-link>
                       <AtomsIcon name="trash" color="#eF4444" />
                     </div>
                   </td>
