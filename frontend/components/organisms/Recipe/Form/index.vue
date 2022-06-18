@@ -5,13 +5,18 @@
     <header
       class="px-5 py-6 border-b border-gray-100 flex items-center justify-between"
     >
-      <h2 class="font-semibold text-gray-800">
-        Preencha o formulário para cadastrar a receita
-      </h2>
+      <h2
+        class="font-semibold text-gray-800"
+        v-text="
+          `Preencha o formulário para ${
+            hasSlug ? 'editar' : 'cadastrar'
+          } a receita`
+        "
+      ></h2>
     </header>
 
     <ValidationObserver ref="form">
-      <form class="p-6 flex flex-col gap-6" @submit.prevent="create">
+      <form class="p-6 flex flex-col gap-6" @submit.prevent="onSubmit">
         <div class="flex gap-3">
           <ValidationProvider
             v-slot="{ errors }"
@@ -34,7 +39,7 @@
             v-slot="{ errors }"
             name="tempo de preparo"
             mode="passive"
-            rules="required|min:1"
+            rules="required"
             class="w-full"
           >
             <div class="relative">
@@ -67,7 +72,7 @@
             v-slot="{ errors }"
             name="porções"
             mode="passive"
-            rules="required|min:1"
+            rules="required"
             class="w-full"
           >
             <MoleculesInputText
@@ -108,6 +113,7 @@
           >
             <MoleculesInputSelect
               v-model="recipe.category"
+              :selected="recipe.category"
               :options="options"
               label="Categorias"
               :errors="errors"
@@ -189,7 +195,10 @@
             <AtomsIcon name="plus" color="#ef4444" />
           </div>
         </div>
-        <AtomsButton label="Finalizar cadastro" primary />
+        <AtomsButton
+          :label="`Finalizar ${hasSlug ? 'edição' : 'cadastro'}`"
+          primary
+        />
       </form>
     </ValidationObserver>
   </div>
@@ -198,7 +207,7 @@
 <script>
 import { formatedTime } from '~/utils/formatedTime'
 export default {
-  name: 'RecipeCreate',
+  name: 'RecipeForm',
 
   props: {
     options: {
@@ -221,6 +230,12 @@ export default {
     },
   },
 
+  computed: {
+    hasSlug() {
+      return this.recipe?.slug
+    },
+  },
+
   methods: {
     formatedTime,
     addItem(item) {
@@ -228,18 +243,25 @@ export default {
       this.recipe[item].push('')
     },
 
-    create() {
+    onSubmit() {
       this.$refs.form.validate().then(async (success) => {
         if (success) {
           try {
             const recipe = {
               ...this.recipe,
               author: this.$auth.user.id,
+              id: Number(this.recipe.id),
               duration: Number(this.recipe.duration),
               portions: Number(this.recipe.portions),
             }
 
-            const response = await this.$strapiApi.createRecipe(recipe)
+            let response
+
+            if (this.hasSlug) {
+              response = await this.$strapiApi.updateRecipe(recipe)
+            } else {
+              response = await this.$strapiApi.createRecipe(recipe)
+            }
 
             if (response) {
               this.$toast.success('Receita cadastrada com sucesso!', {

@@ -17,6 +17,7 @@
         v-for="(option, index) in options"
         :key="index"
         :value="option.id"
+        :selected="option.id === selected"
       >
         {{ option.attributes.name }}
       </option>
@@ -42,6 +43,10 @@ export default {
     options: {
       type: Array,
       default: () => [],
+    },
+    selected: {
+      type: String,
+      default: null,
     },
     errors: {
       type: Array,

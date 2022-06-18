@@ -7,7 +7,7 @@
       </div>
     </header>
 
-    <OrganismsRecipeCreate :options="categories" />
+    <OrganismsRecipeForm :options="categories" />
   </section>
 </template>
 

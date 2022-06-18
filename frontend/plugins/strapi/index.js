@@ -6,7 +6,10 @@ import {
   recipesByUserQuery,
 } from '@/graphql/querys/recipes'
 
-import { createRecipeMutation } from '~/graphql/mutations/recipes'
+import {
+  createRecipeMutation,
+  updateRecipeMutation,
+} from '~/graphql/mutations/recipes'
 
 import { categoriesQuery } from '@/graphql/querys/categories'
 import { registerUserMutation } from '@/graphql/mutations/register'
@@ -46,13 +49,16 @@ export default function ({ app, store }, inject) {
       console.log(error)
     }
   }
-  const recipesBySlug = async (params) => {
+  const recipesBySlug = async (slug) => {
     try {
       const { data } = await client.query({
-        query: recipesBySlugQuery(params.receita),
+        query: recipesBySlugQuery(slug),
       })
       return {
-        recipe: data.recipes.data[0].attributes,
+        recipe: {
+          ...data.recipes.data[0].attributes,
+          id: data.recipes.data[0].id,
+        },
       }
     } catch (error) {
       console.log(error)
@@ -90,7 +96,24 @@ export default function ({ app, store }, inject) {
         context: {
           headers: { authorization: token },
         },
-        mutation: createRecipeMutation(recipe),
+        mutation: createRecipeMutation(),
+        variables: recipe,
+      })
+      return response
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const updateRecipe = async (recipe) => {
+    try {
+      const token = app.$auth.strategy.token.get()
+      const response = await client.mutate({
+        context: {
+          headers: { authorization: token },
+        },
+        mutation: updateRecipeMutation(),
+        variables: recipe,
       })
       return response
     } catch (error) {
@@ -134,6 +157,7 @@ export default function ({ app, store }, inject) {
     recipesByUser,
     recipeSearch,
     createRecipe,
+    updateRecipe,
     loadCategories,
     register,
   })

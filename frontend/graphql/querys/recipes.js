@@ -111,6 +111,16 @@ export const recipesBySlugQuery = (slug) => gql`
               }
             }
           }
+          category {
+            data {
+              id
+              attributes
+              {
+                name
+                slug
+              }
+            }
+          }
         }
       }
     }

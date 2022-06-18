@@ -7,9 +7,7 @@
       </div>
     </header>
 
-    {{ slug }}
-
-    <!-- <OrganismsRecipeCreate :options="categories" /> -->
+    <OrganismsRecipeForm v-if="recipe" :recipe="recipe" :options="categories" />
   </section>
 </template>
 
@@ -20,9 +18,11 @@ export default {
   async asyncData({ $strapiApi, params }) {
     const { categories } = await $strapiApi.loadCategories()
 
+    const { recipe } = await $strapiApi.recipesBySlug(params.slug)
+
     return {
       categories,
-      slug: params.slug,
+      recipe: { ...recipe, category: recipe?.category?.data?.id },
     }
   },
 

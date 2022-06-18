@@ -39,7 +39,7 @@ export default {
   name: 'RecipePage',
 
   async asyncData({ $strapiApi, params }) {
-    const { recipe } = await $strapiApi.recipesBySlug(params)
+    const { recipe } = await $strapiApi.recipesBySlug(params.receita)
 
     return {
       recipe,
