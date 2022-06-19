@@ -87,3 +87,16 @@ export const updateRecipeMutation = () => gql`
     }
   }
 `
+
+export const deleteRecipeMutation = () => gql`
+  mutation ($id: ID!) {
+    deleteRecipe(id: $id) {
+      data {
+        id
+        attributes {
+          name
+        }
+      }
+    }
+  }
+`

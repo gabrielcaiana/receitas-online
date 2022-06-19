@@ -9,6 +9,7 @@ import {
 import {
   createRecipeMutation,
   updateRecipeMutation,
+  deleteRecipeMutation,
 } from '~/graphql/mutations/recipes'
 
 import { categoriesQuery } from '@/graphql/querys/categories'
@@ -120,6 +121,22 @@ export default function ({ app, store }, inject) {
       console.log(error)
     }
   }
+
+  const deleteRecipe = async (id) => {
+    try {
+      const token = app.$auth.strategy.token.get()
+      const response = await client.mutate({
+        context: {
+          headers: { authorization: token },
+        },
+        mutation: deleteRecipeMutation(),
+        variables: { id },
+      })
+      return response
+    } catch (error) {
+      console.log(error)
+    }
+  }
   // categorie
   const loadCategories = async () => {
     try {
@@ -158,6 +175,7 @@ export default function ({ app, store }, inject) {
     recipeSearch,
     createRecipe,
     updateRecipe,
+    deleteRecipe,
     loadCategories,
     register,
   })

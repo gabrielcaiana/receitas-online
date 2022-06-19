@@ -95,7 +95,17 @@
                       >
                         <AtomsIcon name="edit" color="#333333" />
                       </nuxt-link>
-                      <AtomsIcon name="trash" color="#eF4444" />
+                      <AtomsIcon
+                        name="trash"
+                        color="#eF4444"
+                        @click="showDialogDelete = true"
+                      />
+
+                      <OrganismsModalDelete
+                        :show="showDialogDelete"
+                        @close="showDialogDelete = false"
+                        @delete="deleteRecipe(recipe.id)"
+                      />
                     </div>
                   </td>
                 </tr>
@@ -126,9 +136,35 @@ export default {
     },
   },
 
+  data() {
+    return {
+      showDialogDelete: false,
+    }
+  },
+
   methods: {
     formatedTime,
     shortDate,
+
+    async deleteRecipe(id) {
+      try {
+        const response = await this.$strapiApi.deleteRecipe(Number(id))
+
+        if (response) {
+          const index = this.recipes.findIndex((recipe) => recipe.id === id)
+          this.recipes.splice(index, 1)
+
+          this.$toast.success('Receita deletada com sucesso!', {
+            duration: 2000,
+          })
+        }
+      } catch (error) {
+        console.log(error)
+        this.$toast.error(error, {
+          duration: 4000,
+        })
+      }
+    },
   },
 }
 </script>
