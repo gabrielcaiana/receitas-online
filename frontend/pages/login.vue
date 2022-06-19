@@ -20,6 +20,7 @@
 export default {
   name: 'AppLogin',
   layout: 'auth',
+  middleware: 'auth',
 
   head() {
     return {

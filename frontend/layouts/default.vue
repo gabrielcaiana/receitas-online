@@ -14,5 +14,10 @@
 <script>
 export default {
   name: 'AppLayout',
+
+  mounted() {
+    const token = this.$auth.strategy.token.get()
+    this.$store.commit('token/SET_TOKEN', token)
+  },
 }
 </script>

@@ -29,15 +29,15 @@ export default {
 
   components: true,
 
-  buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/tailwindcss'],
-
   modules: [
     '@nuxtjs/pwa',
     '@nuxtjs/apollo',
-    '@nuxtjs/axios',
     '@nuxtjs/auth-next',
     '@nuxtjs/toast',
+    '@nuxtjs/axios',
   ],
+
+  buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/tailwindcss'],
 
   auth: {
     strategies: {
@@ -58,22 +58,16 @@ export default {
       },
     },
     redirect: {
-      login: '/',
+      login: '/login',
       logout: '/',
       callback: '/',
       home: '/',
     },
   },
 
-  axios: {
-    baseUrl: 'http://localhost:1337/',
-  },
-
   apollo: {
     clientConfigs: {
-      default: {
-        httpEndpoint: 'http://localhost:1337/graphql',
-      },
+      default: '@/graphql/apollo.config.js',
     },
     defaultOptions: {
       query: {
@@ -82,9 +76,13 @@ export default {
     },
   },
 
+  publicRuntimeConfig: {
+    baseURL: process.env.API_URL,
+  },
+
   pwa: {
     manifest: {
-      lang: 'en',
+      lang: 'pt-br',
     },
   },
 

@@ -17,11 +17,10 @@
   "dependencies": {
     "@nuxtjs/apollo": "^4.0.1-rc.5",
     "@nuxtjs/auth-next": "5.0.0-1648802546.c9880dc",
-    "@nuxtjs/axios": "5.13.6",
+    "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/pwa": "^3.3.5",
     "@nuxtjs/toast": "^3.3.1",
     "core-js": "^3.19.3",
-    "dotenv": "^16.0.1",
     "feather-icons": "^4.28.0",
     "graphql-tag": "^2.12.6",
     "nuxt": "^2.15.8",

@@ -1,9 +1,7 @@
 <template>
   <div
     class="min-h-screen bg-no-repeat bg-cover bg-center"
-    style="
-      background-image: url('https://www.teahub.io/photos/full/6-63195_food-wallpaper-foods-wallpaper-hd.jpg');
-    "
+    :style="`background-image: url('${$config.baseURL}/uploads/bg_auth_75cf4b14d5.jpeg')`"
   >
     <div class="flex justify-end">
       <div class="bg-white min-h-screen w-1/2 flex justify-center items-center">
@@ -20,6 +18,8 @@
 export default {
   name: 'AppRegister',
   layout: 'auth',
+  middleware: 'auth',
+  auth: 'guest',
 
   head() {
     return {
