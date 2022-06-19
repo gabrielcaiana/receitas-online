@@ -35,7 +35,11 @@
           />
         </svg>
 
-        <h2 class="text-xl font-bold py-4">Você deseja excluir a receita?</h2>
+        <h2 class="text-xl font-bold pt-4">Você deseja excluir a receita:</h2>
+        <p
+          class="text-red-500 font-bold italic pb-4"
+          v-text="recipe.attributes.name"
+        ></p>
         <p class="text-sm text-gray-500">
           Ao excluir não será possível recupera-la novamente<br />
           deseja continuar ?
@@ -44,7 +48,11 @@
 
       <div class="flex gap-2 mt-6">
         <AtomsButton outlined label="Cancelar" @click="$emit('close')" />
-        <AtomsButton primary label="Excluir" />
+        <AtomsButton
+          primary
+          label="Excluir"
+          @click="$emit('delete', recipe.id)"
+        />
       </div>
     </div>
   </div>
@@ -58,6 +66,11 @@ export default {
     show: {
       type: Boolean,
       default: false,
+    },
+
+    recipe: {
+      type: Object,
+      default: () => {},
     },
   },
 }

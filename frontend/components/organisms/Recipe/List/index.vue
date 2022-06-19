@@ -98,13 +98,14 @@
                       <AtomsIcon
                         name="trash"
                         color="#eF4444"
-                        @click="showDialogDelete = true"
+                        @click="openDeleteDialog(recipe)"
                       />
 
                       <OrganismsModalDelete
                         :show="showDialogDelete"
+                        :recipe="recipeSelected"
                         @close="showDialogDelete = false"
-                        @delete="deleteRecipe(recipe.id)"
+                        @delete="deleteRecipe($event)"
                       />
                     </div>
                   </td>
@@ -139,6 +140,7 @@ export default {
   data() {
     return {
       showDialogDelete: false,
+      recipeSelected: null,
     }
   },
 
@@ -146,17 +148,25 @@ export default {
     formatedTime,
     shortDate,
 
+    openDeleteDialog(recipe) {
+      this.showDialogDelete = true
+      this.recipeSelected = recipe
+    },
+
     async deleteRecipe(id) {
       try {
         const response = await this.$strapiApi.deleteRecipe(Number(id))
 
         if (response) {
           const index = this.recipes.findIndex((recipe) => recipe.id === id)
+
           this.recipes.splice(index, 1)
 
           this.$toast.success('Receita deletada com sucesso!', {
             duration: 2000,
           })
+
+          this.showDialogDelete = false
         }
       } catch (error) {
         console.log(error)
