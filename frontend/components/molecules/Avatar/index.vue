@@ -1,7 +1,7 @@
 <template>
   <div class="relative">
     <button
-      class="flex items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left rounded-lg md:w-auto md:inline md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+      class="flex items-center w-full py-2 mt-2 text-sm font-semibold text-left rounded-lg md:w-auto md:inline md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
       @click="open = !open"
     >
       <span v-text="username"></span>
@@ -23,6 +23,13 @@
       class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48 bg-white z-10"
     >
       <div class="px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800">
+        <nuxt-link
+          class="block px-4 py-2 mt-2 text-sm font-semibold bg-white rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+          to="/user/recipe/favorites"
+          @click.native="open = !open"
+          >Receitas favoritas</nuxt-link
+        >
+
         <nuxt-link
           class="block px-4 py-2 mt-2 text-sm font-semibold bg-white rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
           to="/user"
@@ -56,12 +63,6 @@ export default {
     return {
       open: false,
     }
-  },
-
-  methods: {
-    logout() {
-      this.$auth.logout()
-    },
   },
 }
 </script>

@@ -204,6 +204,16 @@ export const recipeFavorites = (id) => gql`
               id
               attributes {
                 name
+                img
+                likes
+                slug
+                category {
+                  data {
+                    attributes {
+                      slug
+                    }
+                  }
+                }
               }
             }
           }

@@ -4,6 +4,7 @@ import {
   recipesBySlugQuery,
   recipeSearchQuery,
   recipesByUserQuery,
+  recipeFavorites,
 } from '@/graphql/querys/recipes'
 
 import {
@@ -89,6 +90,19 @@ export default function ({ app, store }, inject) {
       console.log(error)
     }
   }
+  const recipesFavorites = async (id) => {
+    try {
+      const { data } = await client.query({
+        query: recipeFavorites(id),
+      })
+
+      return {
+        recipes: data?.usersPermissionsUser?.data.attributes?.favorites?.data,
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const createRecipe = async (recipe) => {
     try {
@@ -105,7 +119,6 @@ export default function ({ app, store }, inject) {
       console.log(error)
     }
   }
-
   const updateRecipe = async (recipe) => {
     try {
       const token = app.$auth.strategy.token.get()
@@ -173,6 +186,7 @@ export default function ({ app, store }, inject) {
     recipesBySlug,
     recipesByUser,
     recipeSearch,
+    recipesFavorites,
     createRecipe,
     updateRecipe,
     deleteRecipe,
