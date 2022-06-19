@@ -68,6 +68,11 @@
       "relation": "oneToMany",
       "target": "api::recipe.recipe",
       "mappedBy": "author"
+    },
+    "favorites": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::recipe.recipe"
     }
   }
 }

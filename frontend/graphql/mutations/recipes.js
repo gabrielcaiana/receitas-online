@@ -100,3 +100,31 @@ export const deleteRecipeMutation = () => gql`
     }
   }
 `
+
+export const favoriteRecipeMutation = () => gql`
+  mutation ($id: ID!, $likes: Long!, $idUser: ID!, $favorites: [ID!]) {
+    updateRecipe(id: $id, data: { likes: $likes }) {
+      data {
+        id
+        attributes {
+          likes
+        }
+      }
+    }
+    updateUsersPermissionsUser(id: $idUser, data: { favorites: $favorites }) {
+      data {
+        id
+        attributes {
+          favorites {
+            data {
+              id
+              attributes {
+                name
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`

@@ -193,3 +193,22 @@ export const recipeSearchQuery = (term) => gql`
     }
   }
 `
+
+export const recipeFavorites = (id) => gql`
+  {
+    usersPermissionsUser(id: ${id}) {
+      data {
+        attributes {
+          favorites {
+            data {
+              id
+              attributes {
+                name
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
