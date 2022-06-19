@@ -1,7 +1,7 @@
 <template>
   <div
     class="bg-white rounded-lg shadow-md hover:shadow-xl shadow-gray-500 transition duration-300 ease-out hover:ease-in"
-    :style="{ height: '400px' }"
+    :style="{ height: 'auto' }"
   >
     <img
       :src="image"

@@ -16,8 +16,10 @@ export default {
   name: 'AppLayout',
 
   mounted() {
-    const token = this.$auth.strategy.token.get()
-    this.$store.commit('token/SET_TOKEN', token)
+    if (this.$auth.loggedIn) {
+      const token = this.$auth.strategy.token.get()
+      this.$store.commit('user/SET_TOKEN', token)
+    }
   },
 }
 </script>

@@ -64,5 +64,12 @@ export default {
       open: false,
     }
   },
+
+  methods: {
+    logout() {
+      this.$auth.logout()
+      this.$store.commit('user/SET_TOKEN', null)
+    },
+  },
 }
 </script>

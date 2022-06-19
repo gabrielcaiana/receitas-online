@@ -41,7 +41,7 @@ export default {
 
   computed: {
     favorites() {
-      return this.$store.getters['recipes/getFavorites']
+      return this.$store.getters['user/getRecipesFavorites']
     },
   },
 
@@ -54,13 +54,10 @@ export default {
       try {
         const id = this.$auth.user.id
         const { recipes } = await this.$strapiApi.recipesFavorites(id)
-        this.$store.commit('recipes/SET_FAVORITES', recipes?.length)
+        this.$store.commit('user/SET_RECIPES_FAVORITES', recipes?.length)
       } catch (error) {
         console.log(error)
       }
-    },
-    logout() {
-      this.$auth.logout()
     },
   },
 }
