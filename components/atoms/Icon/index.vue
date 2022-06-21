@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import feather from 'feather-icons'
+
 export default {
   name: 'AppIocon',
   props: {
@@ -30,6 +32,13 @@ export default {
       type: String,
       default: 'transparent',
     },
+  },
+
+  mounted() {
+    feather.replace()
+  },
+  updated() {
+    feather.replace()
   },
 }
 </script>

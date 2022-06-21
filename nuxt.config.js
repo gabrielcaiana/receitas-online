@@ -21,11 +21,7 @@ export default {
     '~/assets/css/global.css',
   ],
 
-  plugins: [
-    '~/plugins/featherIcons',
-    '~/plugins/strapi',
-    '~/plugins/vee-validate',
-  ],
+  plugins: ['~/plugins/strapi', '~/plugins/vee-validate'],
 
   components: true,
 
