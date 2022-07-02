@@ -1,8 +1,6 @@
 <template>
   <div
-    class="bg-white rounded-lg shadow-md hover:shadow-xl shadow-gray-500 transition duration-300 ease-out hover:ease-in"
-    :style="{ height: 'auto' }"
-  >
+    class="bg-white h-[400px] rounded-lg shadow-md hover:shadow-xl shadow-gray-500 transition duration-300 ease-out hover:ease-in">
     <img
       :src="image"
       :alt="title"
