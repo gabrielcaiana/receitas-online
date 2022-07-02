@@ -3,7 +3,7 @@
 </p>
 
 
-<h1 align="center">Receitas Online 🚧</h1>
+<h1 align="center">Receitas Online</h1>
 
 > technologies used
 
