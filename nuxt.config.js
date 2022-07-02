@@ -78,7 +78,9 @@ export default {
 
   pwa: {
     manifest: {
-      lang: 'pt-br',
+      name: 'Receitas online',
+      short_name: 'Receitas online',
+      lang: 'pt-BR',
     },
   },
 
