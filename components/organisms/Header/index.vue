@@ -54,7 +54,7 @@ export default {
       try {
         const id = this.$auth.user.id
         const { recipes } = await this.$strapiApi.recipesFavorites(id)
-        this.$store.commit('user/SET_RECIPES_FAVORITES', recipes?.length)
+        this.$store.commit('user/SET_RECIPES_FAVORITES', recipes?.length ?? 0)
       } catch (error) {
         console.log(error)
       }

@@ -38,12 +38,19 @@
 export default {
   name: 'RecipePage',
 
-  async asyncData({ $strapiApi, params }) {
+  async asyncData({ $strapiApi, $auth, params }) {
+    let favorites 
     const { recipe } = await $strapiApi.recipesBySlug(params.receita)
+
+    if($auth.loggedIn) {
+      const id = $auth.user.id
+      favorites = await $strapiApi.recipesFavorites(id)
+    }
 
     return {
       recipe,
       author: recipe.author?.data?.attributes,
+      favorites: favorites?.recipes
     }
   },
 

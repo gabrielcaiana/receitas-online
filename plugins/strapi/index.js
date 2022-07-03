@@ -97,7 +97,7 @@ export default function ({ app, store }, inject) {
       })
 
       return {
-        recipes: data?.usersPermissionsUser?.data.attributes?.favorites?.data,
+        recipes: data?.usersPermissionsUser?.data?.attributes?.favorites?.data,
       }
     } catch (error) {
       console.log(error)
