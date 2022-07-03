@@ -5,12 +5,14 @@ import {
   recipeSearchQuery,
   recipesByUserQuery,
   recipeFavorites,
+  getLikes
 } from '@/graphql/querys/recipes'
 
 import {
   createRecipeMutation,
   updateRecipeMutation,
   deleteRecipeMutation,
+  favoriteRecipeMutation
 } from '~/graphql/mutations/recipes'
 
 import { categoriesQuery } from '@/graphql/querys/categories'
@@ -103,6 +105,17 @@ export default function ({ app, store }, inject) {
       console.log(error)
     }
   }
+  const recipeGetLikes = async (id) => {
+    try {
+      const { data } = await client.query({
+        query: getLikes(id),
+      })
+
+      return data?.recipe.data?.attributes
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const createRecipe = async (recipe) => {
     try {
@@ -128,6 +141,26 @@ export default function ({ app, store }, inject) {
         },
         mutation: updateRecipeMutation(),
         variables: recipe,
+      })
+      return response
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  const updateFavoriteRecipeUser = async ({id, likes, idUser, favorites}) => {
+    try {
+      const token = app.$auth.strategy.token.get()
+      const response = await client.mutate({
+        context: {
+          headers: { authorization: token },
+        },
+        mutation: favoriteRecipeMutation(),
+        variables: {
+          id,
+          likes,
+          idUser,
+          favorites
+        },
       })
       return response
     } catch (error) {
@@ -187,8 +220,10 @@ export default function ({ app, store }, inject) {
     recipesByUser,
     recipeSearch,
     recipesFavorites,
+    recipeGetLikes,
     createRecipe,
     updateRecipe,
+    updateFavoriteRecipeUser,
     deleteRecipe,
     loadCategories,
     register,

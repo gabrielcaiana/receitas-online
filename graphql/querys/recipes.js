@@ -221,3 +221,16 @@ export const recipeFavorites = (id) => gql`
     }
   }
 `
+
+export const getLikes = (id) => gql`
+{
+  recipe(id: ${id}){
+    data{
+      id
+      attributes{
+        likes
+      }
+    }
+  }
+}
+`
